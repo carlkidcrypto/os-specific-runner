@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KnicKnic/os-specific-run.git"
+    "url": "git+https://github.com/carlkidcrypto-os-specific-run-2.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KnicKnic/os-specific-run/issues"
+    "url": "https://github.com/carlkidcrypto-os-specific-run-2/issues"
   },
-  "homepage": "https://github.com/KnicKnic/os-specific-run#readme",
+  "homepage": "https://github.com/carlkidcrypto-os-specific-run-2#readme",
   "dependencies": {
     "@actions/core": "^1.4.0",
     "@actions/exec": "^1.0.4"
