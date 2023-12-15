@@ -1,5 +1,5 @@
 [![test](https://github.com/carlkidcrypto-os-specific-run-2/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/carlkidcrypto-os-specific-run-2/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
-# os-specific-run 
+# os-specific-runner
 
 A github action for running a separate command based on the os
 
