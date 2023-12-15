@@ -1,5 +1,5 @@
 {
-  "name": "os-specific-run",
+  "name": "os-specific-runner",
   "version": "2.0.0",
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
