@@ -32,7 +32,7 @@ jobs:
         windows: echo "test2"
         windowsShell: cmd
     - 
-      uses: knicknic/os-specific-run@main
+      uses: carlkidcrypto-os-specific-run-2@main
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -40,7 +40,7 @@ jobs:
           echo "Hi from linux second line"
         windows: echo "Hi from windows"
     - 
-      uses: knicknic/os-specific-run@main
+      uses: carlkidcrypto-os-specific-run-2@main
       with:
         macos: echo "test2"
         linux: echo "test2"
