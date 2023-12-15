@@ -1,6 +1,6 @@
 {
   "name": "os-specific-run",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
   "scripts": {

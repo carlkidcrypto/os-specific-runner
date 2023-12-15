@@ -1,10 +1,10 @@
-[![test](https://github.com/KnicKnic/os-specific-run/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/KnicKnic/os-specific-run/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
+[![test](https://github.com/carlkidcrypto-os-specific-run-2/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/carlkidcrypto-os-specific-run-2/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
 # os-specific-run 
 
 A github action for running a separate command based on the os
 
 ```yaml
-    - uses: knicknic/os-specific-run@v1.0.3
+    - uses: carlkidcrypto-os-specific-run-2@v1.0.3
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -53,7 +53,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: knicknic/os-specific-run@v1
+    - uses: carlkidcrypto-os-specific-run-2@v1
       with:
         macos: echo "Hi from macos"
         linux: |
