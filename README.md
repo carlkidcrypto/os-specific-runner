@@ -73,6 +73,7 @@ The problem is you have to figure them out, and they end up creating multiple st
 ### Setup Environment
 
 ```pwsh
+export NODE_OPTIONS=--openssl-legacy-provider
 npm i -g @vercel/ncc@0.26.2 # can be a newer version
 npm install
 ```
