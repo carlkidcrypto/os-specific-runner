@@ -74,7 +74,7 @@ The problem is you have to figure them out, and they end up creating multiple st
 
 ```pwsh
 export NODE_OPTIONS=--openssl-legacy-provider
-npm i -g @vercel/ncc@0.26.2 # can be a newer version
+npm i -g @vercel/ncc@0.38.1 # can be a newer version
 npm install
 ```
 
