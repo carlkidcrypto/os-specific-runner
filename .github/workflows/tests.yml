@@ -37,7 +37,7 @@ jobs:
       #     windowsShell: cmd
 
       - name: Running third test...
-        uses: carlkidcrypto-os-specific-runner@main
+        uses: carlkidcrypto/os-specific-runner@main
         with:
           macos: echo "Hi from macos"
           linux: |
@@ -46,7 +46,7 @@ jobs:
           windows: echo "Hi from windows"
 
       - name: Running fourth test...
-        uses: carlkidcrypto-os-specific-runner@main
+        uses: carlkidcrypto/os-specific-runner@main
         with:
           macos: echo "test2"
           linux: echo "test2"
