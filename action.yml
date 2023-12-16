@@ -1,6 +1,6 @@
 name: 'OS specific runner'
-description: 'Run a command based on the OS'
-author: Carlos Santos
+description: 'Run a command based on the OS.'
+author: carlkidcrypto
 inputs:
   linux:  # id of input
     description: 'linux commandline'
@@ -28,7 +28,7 @@ inputs:
     default: 'pwsh'
 branding:
   icon: list
-  color: purple
+  color: red
 runs:
   using: 'node21'
   main: 'dist/index.js'

@@ -1,5 +1,10 @@
 # os-specific-runner
 
+All credit for the original work goes to (KnicKnic). This is a detached-fork of <https://github.com/KnicKnic/os-specific-run>.
+This version (2.0.0 and beyond) will attempt to stay upto date on the lastest version of NPM and other dependecies.
+
+## Status Badge(s)
+
 [![test](https://github.com/carlkidcrypto-os-specific-runner/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/carlkidcrypto-os-specific-runner/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
 
 A github action for running a separate command based on the os
