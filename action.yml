@@ -1,6 +1,6 @@
-name: 'OS specific run'
+name: 'OS specific runner'
 description: 'Run a command based on the OS'
-author: Nick Maliwacki
+author: Carlos Santos
 inputs:
   linux:  # id of input
     description: 'linux commandline'
@@ -30,5 +30,5 @@ branding:
   icon: list
   color: purple
 runs:
-  using: 'node12'
+  using: 'node21'
   main: 'dist/index.js'

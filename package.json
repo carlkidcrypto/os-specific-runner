@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carlkidcrypto-os-specific-run-2.git"
+    "url": "git+https://github.com/carlkidcrypto-os-specific-runner.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/carlkidcrypto-os-specific-run-2/issues"
+    "url": "https://github.com/carlkidcrypto-os-specific-runner/issues"
   },
-  "homepage": "https://github.com/carlkidcrypto-os-specific-run-2#readme",
+  "homepage": "https://github.com/carlkidcrypto-os-specific-runner#readme",
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/exec": "^1.1.1"
