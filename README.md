@@ -5,7 +5,8 @@ This version (2.0.0 and beyond) will attempt to stay upto date on the lastest ve
 
 ## Status Badge(s)
 
-[![test](https://github.com/carlkidcrypto/os-specific-runner/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/carlkidcrypto/os-specific-runner/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
+| [![tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) |
+| --------------- | --------------- | --------------- |
 
 A github action for running a separate command based on the os
 
