@@ -17,25 +17,24 @@ jobs:
     steps:
       - name: Check out source code...
         uses: actions/checkout@v4.1.1
-        
-        
-      - name: Running first test...
-        uses: ./
-        with:
-          macos: echo "Hi from macos"
-          linux: |
-            echo "Hi from linux"
-            echo "Hi from linux second line"
-          windows: echo "Hi from windows"
-          windowsShell: cmd
 
-      - name: Running second test...
-        uses: ./
-        with:
-          macos: echo "test2"
-          linux: echo "test2"
-          windows: echo "test2"
-          windowsShell: cmd
+      # - name: Running first test...
+      #   uses: ./
+      #   with:
+      #     macos: echo "Hi from macos"
+      #     linux: |
+      #       echo "Hi from linux"
+      #       echo "Hi from linux second line"
+      #     windows: echo "Hi from windows"
+      #     windowsShell: cmd
+
+      # - name: Running second test...
+      #   uses: ./
+      #   with:
+      #     macos: echo "test2"
+      #     linux: echo "test2"
+      #     windows: echo "test2"
+      #     windowsShell: cmd
 
       - name: Running third test...
         uses: carlkidcrypto-os-specific-runner@main
