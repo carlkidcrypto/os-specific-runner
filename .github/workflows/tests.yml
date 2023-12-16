@@ -13,12 +13,14 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-    steps:
-    - uses: actions/checkout@v4.1.1
-      name: Check out source code...
   
-    - uses: ./action.yml
-      name: Running first test...
+    steps:
+    - name: Check out source code...
+      uses: actions/checkout@v4.1.1
+      
+      
+    - name: Running first test...
+      uses: ./
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -27,16 +29,16 @@ jobs:
         windows: echo "Hi from windows"
         windowsShell: cmd
 
-    - uses: ./action.yml
-      name: Running second test...
+    - name: Running second test...
+      uses: ./
       with:
         macos: echo "test2"
         linux: echo "test2"
         windows: echo "test2"
         windowsShell: cmd
   
-    - uses: carlkidcrypto-os-specific-runner@main
-      name: Running third test...
+    - name: Running third test...
+      uses: carlkidcrypto-os-specific-runner@main
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -44,8 +46,8 @@ jobs:
           echo "Hi from linux second line"
         windows: echo "Hi from windows"
   
-    - uses: carlkidcrypto-os-specific-runner@main
-      name: Running fourth test...
+    - name: Running fourth test...
+      uses: carlkidcrypto-os-specific-runner@main
       with:
         macos: echo "test2"
         linux: echo "test2"
