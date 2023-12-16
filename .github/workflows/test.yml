@@ -3,6 +3,7 @@ name: test
 on:
   push:
     branches: [ main, master ]
+
   pull_request:
     branches: [ main, master ]
 
@@ -32,7 +33,7 @@ jobs:
         windows: echo "test2"
         windowsShell: cmd
     - 
-      uses: carlkidcrypto-os-specific-run-2@main
+      uses: carlkidcrypto-os-specific-runner@main
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -40,7 +41,7 @@ jobs:
           echo "Hi from linux second line"
         windows: echo "Hi from windows"
     - 
-      uses: carlkidcrypto-os-specific-run-2@main
+      uses: carlkidcrypto-os-specific-runner@main
       with:
         macos: echo "test2"
         linux: echo "test2"

@@ -2,6 +2,10 @@ name: regenerate
 
 on:
   push:
+    branches: [ main, master ]
+
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
   regenerate_dist-index_js:
@@ -18,9 +22,7 @@ jobs:
         ncc build index.js
     -
       name: Git Auto Commit
-      uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
         file_pattern: dist/index.js
         commit_message: Regenerate dist/index.js
-        
-        
