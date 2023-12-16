@@ -5,12 +5,12 @@ This version (2.0.0 and beyond) will attempt to stay upto date on the lastest ve
 
 ## Status Badge(s)
 
-[![test](https://github.com/carlkidcrypto-os-specific-runner/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/carlkidcrypto-os-specific-runner/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
+[![test](https://github.com/carlkidcrypto/os-specific-runner/workflows/test/badge.svg?branch=main&event=push&workflow=test)](https://github.com/carlkidcrypto/os-specific-runner/actions?query=branch%3Amain+event%3Apush+workflow%3Atest)
 
 A github action for running a separate command based on the os
 
 ```yaml
-    - uses: carlkidcrypto-os-specific-runner@v2.0.0
+    - uses: carlkidcrypto/os-specific-runner@v2.0.0
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -63,7 +63,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: carlkidcrypto-os-specific-runner@v2.0.0
+    - uses: carlkidcrypto/os-specific-runner@v2.0.0
       with:
         macos: echo "Hi from macos"
         linux: |

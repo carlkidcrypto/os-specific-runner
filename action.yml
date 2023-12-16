@@ -30,5 +30,5 @@ branding:
   icon: list
   color: red
 runs:
-  using: 'node21'
+  using: 'node20'
   main: 'dist/index.js'
