@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v4.1.1
       name: Check out source code...
   
-    - uses: ./
+    - uses: ./action.yml
       name: Running first test...
       with:
         macos: echo "Hi from macos"
@@ -27,7 +27,7 @@ jobs:
         windows: echo "Hi from windows"
         windowsShell: cmd
 
-    - uses: ./
+    - uses: ./action.yml
       name: Running second test...
       with:
         macos: echo "test2"
