@@ -15,7 +15,10 @@ jobs:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
     steps:
     - uses: actions/checkout@v4.1.1
+      name: Check out source code...
+  
     - uses: ./
+      name: Running first test...
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -23,20 +26,26 @@ jobs:
           echo "Hi from linux second line"
         windows: echo "Hi from windows"
         windowsShell: cmd
+
     - uses: ./
+      name: Running second test...
       with:
         macos: echo "test2"
         linux: echo "test2"
         windows: echo "test2"
         windowsShell: cmd
+  
     - uses: carlkidcrypto-os-specific-runner@main
+      name: Running third test...
       with:
         macos: echo "Hi from macos"
         linux: |
           echo "Hi from linux"
           echo "Hi from linux second line"
         windows: echo "Hi from windows"
+  
     - uses: carlkidcrypto-os-specific-runner@main
+      name: Running fourth test...
       with:
         macos: echo "test2"
         linux: echo "test2"
