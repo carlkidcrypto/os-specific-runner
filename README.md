@@ -5,8 +5,8 @@ This version (2.0.0 and beyond) will attempt to stay upto date on the lastest ve
 
 ## Status Badge(s)
 
-| [![tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) |
-| --------------- | --------------- | --------------- |
+| [![tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) | [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.0.0/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.0.0) |
+| --------------- | --------------- | --------------- | --------------- | --------------- |
 
 A github action for running a separate command based on the os
 
