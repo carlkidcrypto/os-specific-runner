@@ -43,7 +43,7 @@ async function body() {
         let command = '';
         let unformattedShell = '';
 
-        let tmpPath = join(sep, 'tmp', 'knicknic', 'os-specific-run')
+        let tmpPath = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
         await promises.mkdir(tmpPath, { recursive: true });
 
         let file = join(tmpPath, uuidv4())
