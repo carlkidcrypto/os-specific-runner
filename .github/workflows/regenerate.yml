@@ -16,10 +16,9 @@ jobs:
     - 
       name: regenerate dist/index.js
       run: |
-        export NODE_OPTIONS=--openssl-legacy-provider
         sudo npm i -g @vercel/ncc@0.38.1
         npm install
-        ncc build index.js
+        ncc build index.js -m
     -
       name: Git Auto Commit
       uses: stefanzweifel/git-auto-commit-action@v5
