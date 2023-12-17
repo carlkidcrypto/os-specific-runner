@@ -46,15 +46,13 @@ async function body() {
         let file = null;
         let tmpPath = null;
 
-        if (working_directory == "")
-        {
+        if (working_directory == "") {
             tmpPath = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
         }
-        else
-        {
-            tmpPath =  join(sep, working_directory)
+        else {
+            tmpPath = join(sep, working_directory)
         }
-        
+
         await promises.mkdir(tmpPath, { recursive: true });
         file = join(working_directory, uuidv4())
 
