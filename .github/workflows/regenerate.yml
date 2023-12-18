@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main, master ]
 
+  pull_request:
+    branches: [ main, master ]
+
 jobs:
   regenerate_dist-index_js:
     runs-on: ubuntu-latest
@@ -13,7 +16,7 @@ jobs:
     - 
       name: regenerate dist/index.js
       run: |
-        sudo npm i -g @vercel/ncc@0.38.1
+        npm i -g @vercel/ncc@0.38.1
         npm install
         ncc build index.js -m
     -
