@@ -4,9 +4,6 @@ on:
   push:
     branches: [ main, master ]
 
-  pull_request:
-    branches: [ main, master ]
-
 jobs:
   regenerate_dist-index_js:
     runs-on: ubuntu-latest
