@@ -38,7 +38,7 @@ jobs:
       - name: Running third test...
         uses: ./
         with:
-          working_directory: /new/wd/that/I/want/
+          working_directory: my_new_dir/dir_2/dir3/here_5
           macos: echo "test2"
           linux: echo "test2"
           windows: echo "test2"
