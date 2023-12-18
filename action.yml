@@ -1,34 +1,45 @@
-name: 'OS specific runner'
-description: 'Run a command based on the OS.'
+name: "OS specific runner"
+description: "Run a command based on the OS."
 author: carlkidcrypto
 inputs:
-  linux:  # id of input
-    description: 'linux commandline'
+  linux: # id of input
+    description: "linux commandline"
     required: false
     default: 'echo "No command specified for linux"'
-  macos:  # id of input
-    description: 'macos commandline'
+
+  macos: # id of input
+    description: "macos commandline"
     required: false
     default: 'echo "No command specified for macos"'
-  windows:  # id of input
-    description: 'windows commandline'
+
+  windows: # id of input
+    description: "windows commandline"
     required: false
     default: 'echo "No command specified for windows"'
-  linuxShell:  # id of input
-    description: 'linux commandline shell'
+
+  linuxShell: # id of input
+    description: "linux commandline shell"
     required: false
-    default: 'bash'
-  macosShell:  # id of input
-    description: 'macos commandline shell'
+    default: "bash"
+
+  macosShell: # id of input
+    description: "macos commandline shell"
     required: false
-    default: 'bash'
-  windowsShell:  # id of input
-    description: 'windows commandline shell'
+    default: "bash"
+
+  windowsShell: # id of input
+    description: "windows commandline shell"
     required: false
-    default: 'pwsh'
+    default: "pwsh"
+
+  working_directory:
+    description: "The path from which to run commands in"
+    required: false
+    default: ""
+
 branding:
   icon: list
   color: red
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"

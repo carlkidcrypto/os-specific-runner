@@ -41,12 +41,21 @@ let builtInShells = {
 async function body() {
     try {
         let command = '';
+        let working_directory = getInput('working_directory');
         let unformattedShell = '';
+        let file = null;
+        let temp_working_directory = null;
 
-        let tmpPath = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
-        await promises.mkdir(tmpPath, { recursive: true });
+        if (working_directory == "") {
+            temp_working_directory = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
+        }
+        else {
+            working_directory = "/tmp/" + working_directory;
+            temp_working_directory = join(sep, working_directory)
+        }
 
-        let file = join(tmpPath, uuidv4())
+        await promises.mkdir(temp_working_directory, { recursive: true });
+        file = join(temp_working_directory, uuidv4())
 
         // https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
 

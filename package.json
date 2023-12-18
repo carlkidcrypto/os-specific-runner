@@ -1,6 +1,6 @@
 {
   "name": "os-specific-runner",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/carlkidcrypto-os-specific-runner.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "os-specific-runner",
+    "os-specific-run",
+    "os",
+    "utilities"
+  ],
+  "author": "carlkidcrypto",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/carlkidcrypto-os-specific-runner/issues"

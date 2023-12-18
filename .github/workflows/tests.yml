@@ -18,26 +18,8 @@ jobs:
       - name: Check out source code...
         uses: actions/checkout@v4.1.1
 
-      # - name: Running first test...
-      #   uses: ./
-      #   with:
-      #     macos: echo "Hi from macos"
-      #     linux: |
-      #       echo "Hi from linux"
-      #       echo "Hi from linux second line"
-      #     windows: echo "Hi from windows"
-      #     windowsShell: cmd
-
-      # - name: Running second test...
-      #   uses: ./
-      #   with:
-      #     macos: echo "test2"
-      #     linux: echo "test2"
-      #     windows: echo "test2"
-      #     windowsShell: cmd
-
-      - name: Running third test...
-        uses: carlkidcrypto/os-specific-runner@main
+      - name: Running first test...
+        uses: ./
         with:
           macos: echo "Hi from macos"
           linux: |
@@ -45,9 +27,18 @@ jobs:
             echo "Hi from linux second line"
           windows: echo "Hi from windows"
 
-      - name: Running fourth test...
-        uses: carlkidcrypto/os-specific-runner@main
+      - name: Running second test...
+        uses: ./
         with:
+          macos: echo "test2"
+          linux: echo "test2"
+          windows: echo "test2"
+          windowsShell: cmd
+
+      - name: Running third test...
+        uses: ./
+        with:
+          working_directory: my_new_dir/dir_2/dir3/here_5
           macos: echo "test2"
           linux: echo "test2"
           windows: echo "test2"
