@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4.1.1
 
       - name: Running first test...
-        uses: carlkidcrypto/os-specific-runner@main
+        uses: ./
         with:
           macos: echo "Hi from macos"
           linux: |
@@ -28,7 +28,7 @@ jobs:
           windows: echo "Hi from windows"
 
       - name: Running second test...
-        uses: carlkidcrypto/os-specific-runner@main
+        uses: ./
         with:
           macos: echo "test2"
           linux: echo "test2"
@@ -36,7 +36,7 @@ jobs:
           windowsShell: cmd
 
       - name: Running third test...
-        uses: carlkidcrypto/os-specific-runner@main
+        uses: ./
         with:
           working_directory: /new/wd/that/I/want/
           macos: echo "test2"
