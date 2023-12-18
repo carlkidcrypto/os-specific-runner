@@ -44,17 +44,17 @@ async function body() {
         let working_directory = getInput('working_directory');
         let unformattedShell = '';
         let file = null;
-        let tmpPath = null;
+        let temp_working_directory = null;
 
         if (working_directory == "") {
-            tmpPath = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
+            temp_working_directory = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
         }
         else {
-            tmpPath = join(sep, working_directory)
+            temp_working_directory = join(sep, working_directory)
         }
 
-        await promises.mkdir(tmpPath, { recursive: true });
-        file = join(working_directory, uuidv4())
+        await promises.mkdir(temp_working_directory, { recursive: true });
+        file = join(temp_working_directory, uuidv4())
 
         // https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
 
