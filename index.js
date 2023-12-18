@@ -50,8 +50,10 @@ async function body() {
             temp_working_directory = join(sep, 'tmp', 'carlkidcrypto', 'os-specific-runner')
         }
         else {
-            working_directory = "/home/" + working_directory;
-            temp_working_directory = join(sep, working_directory)
+            const split_str = working_directory.split("/");
+            for (item of split_str) {
+                temp_working_directory = join(sep, item)
+            }
         }
 
         await promises.mkdir(temp_working_directory, { recursive: true });
