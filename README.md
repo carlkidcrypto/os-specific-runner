@@ -90,8 +90,14 @@ The problem is you have to figure them out, and they end up creating multiple st
 ### Setup Environment
 
 ```pwsh
-npm i -g @vercel/ncc@0.38.1
+npm install -g npm@10.4.0
 npm install
+```
+
+### Update lock file
+
+```pwsh
+npm update
 ```
 
 ### Update project
@@ -99,3 +105,5 @@ npm install
 ```pwsh
 ncc build index.js -m
 ```
+
+### Run tests
