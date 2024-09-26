@@ -1,6 +1,6 @@
 {
   "name": "os-specific-runner",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,14 @@
   },
   "keywords": [
     "os-specific-runner",
+    "os specific runner",
     "os-specific-run",
+    "os specific run",
     "os",
+    "specific",
+    "run",
+    "runner",
+    "commands",
     "utilities"
   ],
   "author": "carlkidcrypto",
