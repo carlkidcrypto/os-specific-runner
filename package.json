@@ -31,6 +31,6 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/exec": "^1.1.1",
-    "@vercel/ncc": "^0.38.2"
+    "@vercel/ncc": "^0.38.3"
   }
 }
