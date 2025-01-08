@@ -36,6 +36,7 @@ let builtInShells = {
     sh: 'sh -e {0}',
     cmd: 'cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""',
     powershell: 'powershell -command "& \'{0}\'"',
+    zsh: 'zsh -e {0}'
 }
 
 async function body() {
