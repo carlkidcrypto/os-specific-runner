@@ -2,10 +2,10 @@ name: tests
 
 on:
   push:
-    branches: [ feature/zsh ]
+    branches: [ main, master ]
 
   pull_request:
-    branches: [ feature/zsh ]
+    branches: [ main, master ]
 
 jobs:
   build:
