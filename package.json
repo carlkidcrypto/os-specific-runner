@@ -1,6 +1,6 @@
 {
   "name": "os-specific-runner",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
   "scripts": {
