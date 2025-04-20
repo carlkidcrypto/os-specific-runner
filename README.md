@@ -45,6 +45,7 @@ Enable dependabot to get notifications for updated actions by creating [.github/
 | os      | command value                           |
 |---------|-----------------------------------------|
 | macosShell   | bash |
+| macosShell   | zsh  |
 | linuxShell   | bash |
 | windowsShell | pwsh |
 
@@ -108,3 +109,5 @@ ncc build index.js -m
 ```
 
 ### Run tests
+
+They run as workflows. See the `tests.yml` workflow for more information.

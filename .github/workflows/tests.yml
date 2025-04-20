@@ -2,10 +2,10 @@ name: tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ feature/zsh ]
 
   pull_request:
-    branches: [ main, master ]
+    branches: [ feature/zsh ]
 
 jobs:
   build:
@@ -43,3 +43,17 @@ jobs:
           linux: echo "test2"
           windows: echo "test2"
           windowsShell: cmd
+      
+      - name: Running fourth test...
+        uses: ./
+        with:
+          working_directory: my_new_dir_1/dir_1/dir1/here_1
+          macos: echo "test2"
+          macosShell: bash
+      
+      - name: Running fifth test...
+        uses: ./
+        with:
+          working_directory: my_new_dir_1/dir_1/dir1/here_1
+          macos: echo "test2"
+          macosShell: zsh
