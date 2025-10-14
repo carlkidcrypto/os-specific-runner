@@ -91,8 +91,8 @@ The problem is you have to figure them out, and they end up creating multiple st
 ### Setup Environment
 
 ```pwsh
-npm install -g npm@10.8.3
-npm i -g @vercel/ncc@0.38.3
+npm install -g npm@11.6.2
+npm install -g @vercel/ncc@0.38.4
 npm install
 ```
 
