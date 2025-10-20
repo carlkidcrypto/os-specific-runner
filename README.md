@@ -1,11 +1,11 @@
 # os-specific-runner
 
 All credit for the original work goes to (KnicKnic). This is a detached-fork of <https://github.com/KnicKnic/os-specific-run>.
-This version (2.0.0 and beyond) will attempt to stay upto date on the lastest version of NPM and other dependecies.
+This version (2.1.3 and beyond) will attempt to stay up to date on the latest version of NPM and other dependencies.
 
 ## Status Badge(s)
 
-| [![tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) | [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.1.0/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.1.0) |
+| [![tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) | [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.1.3/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.1.3) |
 | --------------- | --------------- | --------------- | --------------- | --------------- |
 
 ## How to Support This Project
@@ -17,7 +17,7 @@ This version (2.0.0 and beyond) will attempt to stay upto date on the lastest ve
 A github action for running a separate command based on the os
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.0.0
+    - uses: carlkidcrypto/os-specific-runner@v2.1.3
       with:
         macos: echo "Hi from macos"
         linux: |
@@ -71,7 +71,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: carlkidcrypto/os-specific-runner@v2.0.0
+    - uses: carlkidcrypto/os-specific-runner@v2.1.3
       with:
         macos: echo "Hi from macos"
         linux: |
