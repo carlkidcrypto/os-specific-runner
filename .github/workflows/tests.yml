@@ -18,7 +18,7 @@ jobs:
   
     steps:
       - name: Check out source code...
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Running first test...
         uses: ./
