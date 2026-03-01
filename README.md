@@ -5,8 +5,8 @@ This version (2.1.3 and beyond) will attempt to stay up to date on the latest ve
 
 ## Status Badge(s)
 
-| [![tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) | [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.1.3/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.1.3) |
-| --------------- | --------------- | --------------- | --------------- | --------------- |
+| [![unit_tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml) | [![integration_tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) | [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.1.3/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.1.3) |
+| --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
 
 ## How to Support This Project
 
@@ -113,4 +113,10 @@ ncc build index.js -m
 
 ### Run tests
 
-They run as workflows. See the `tests.yml` workflow for more information.
+Unit tests run locally with:
+
+```pwsh
+npm test
+```
+
+Integration tests and unit tests also run as workflows. See `unit_tests.yml` and `integration_tests.yml` for more information.
