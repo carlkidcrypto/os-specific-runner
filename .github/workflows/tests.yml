@@ -20,6 +20,12 @@ jobs:
       - name: Check out source code...
         uses: actions/checkout@v6.0.2
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm test
+
       - name: Running first test...
         uses: ./
         with:

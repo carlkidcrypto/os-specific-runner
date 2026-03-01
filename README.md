@@ -47,7 +47,10 @@ Enable dependabot to get notifications for updated actions by creating [.github/
 | macosShell   | bash |
 | macosShell   | zsh  |
 | linuxShell   | bash |
+| linuxShell   | sh   |
 | windowsShell | pwsh |
+| windowsShell | cmd  |
+| windowsShell | powershell |
 
 See <https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell> for more details
 
