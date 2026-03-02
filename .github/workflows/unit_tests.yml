@@ -1,6 +1,7 @@
 name: unit_tests
 permissions:
   contents: read
+  id-token: write
 
 on:
   push:
@@ -25,3 +26,8 @@ jobs:
 
       - name: Run unit tests
         run: npm test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: true

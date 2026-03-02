@@ -4,7 +4,7 @@
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "build": "ncc build index.js -m"
   },
   "repository": {
@@ -44,6 +44,8 @@
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": ["text", "lcov"]
   }
 }
