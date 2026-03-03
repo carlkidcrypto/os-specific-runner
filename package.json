@@ -1,14 +1,15 @@
 {
   "name": "os-specific-runner",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "A github action for running a separate command based on the os",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "build": "ncc build index.js -m"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carlkidcrypto-os-specific-runner.git"
+    "url": "git+https://github.com/carlkidcrypto/os-specific-runner.git"
   },
   "keywords": [
     "os-specific-runner",
@@ -25,12 +26,26 @@
   "author": "carlkidcrypto",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/carlkidcrypto-os-specific-runner/issues"
+    "url": "https://github.com/carlkidcrypto/os-specific-runner/issues"
   },
-  "homepage": "https://github.com/carlkidcrypto-os-specific-runner#readme",
+  "homepage": "https://github.com/carlkidcrypto/os-specific-runner#readme",
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/exec": "^3.0.0",
     "@vercel/ncc": "^0.38.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": ["text", "lcov"]
   }
 }

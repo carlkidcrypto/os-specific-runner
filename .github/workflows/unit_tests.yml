@@ -1,0 +1,33 @@
+name: unit_tests
+permissions:
+  contents: read
+  id-token: write
+
+on:
+  push:
+    branches: [ main, master ]
+
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  unit_tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+
+    steps:
+      - name: Check out source code...
+        uses: actions/checkout@v6.0.2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: true

@@ -1,4 +1,4 @@
-name: tests
+name: integration_tests
 permissions:
   contents: read
 
@@ -10,12 +10,12 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  integration_tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-  
+
     steps:
       - name: Check out source code...
         uses: actions/checkout@v6.0.2
@@ -45,14 +45,14 @@ jobs:
           linux: echo "test2"
           windows: echo "test2"
           windowsShell: cmd
-      
+
       - name: Running fourth test...
         uses: ./
         with:
           working_directory: my_new_dir_1/dir_1/dir1/here_1
           macos: echo "test2"
           macosShell: bash
-      
+
       - name: Running fifth test...
         uses: ./
         with:
