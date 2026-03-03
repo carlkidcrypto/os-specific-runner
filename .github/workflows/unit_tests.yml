@@ -2,6 +2,7 @@ name: unit_tests
 permissions:
   contents: read
   id-token: write
+  pull-requests: write
 
 on:
   push:
@@ -32,3 +33,4 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: ${{ matrix.os }}
