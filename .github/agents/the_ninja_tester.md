@@ -16,7 +16,7 @@ Focus on the following instructions:
 - Ensure that `tests/` are written using the Jest Testing Framework
 - Ensure to make tests platform agnostic as much as possible
 - Ensure tests validate all supported shells (bash, zsh, pwsh)
-- Ensure tests validate the action's inputs (linux_command, macos_command, windows_command, etc.)
+- Ensure tests validate the action's inputs (linux, macos, windows, linuxShell, macosShell, windowsShell, working_directory)
 - Ensure tests mock @actions/core and @actions/exec appropriately
 - Ensure tests are compatible with Node.js v20
 - Ensure coverage reports are generated using Jest's built-in coverage tools

@@ -18,8 +18,8 @@ Focus on the following instructions:
 - Ensure tests validate the working_directory input functionality
 - Ensure tests are compatible with Node.js v20
 - Ensure tests verify cross-platform command execution
-- Ensure tests check all action inputs: linux_command, macos_command, windows_command,
-    linux_shell, macos_shell, windows_shell, working_directory
+- Ensure tests check all action inputs: linux, macos, windows,
+    linuxShell, macosShell, windowsShell, working_directory
 - Ensure coverage reports are generated and saved to coverage/ directory
 
 Tools needed:
