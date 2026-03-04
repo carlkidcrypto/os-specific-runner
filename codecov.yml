@@ -1,0 +1,45 @@
+# CodeCov configuration for os-specific-runner
+# Documentation: https://docs.codecov.com/docs/codecov-yaml
+
+# Coverage configuration
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1%
+        informational: false
+    patch:
+      default:
+        target: auto
+        threshold: 1%
+        informational: false
+
+# Ignore paths - exclude test files from coverage reports
+ignore:
+  - "tests/**"
+  - "**/*.test.js"
+  - "dist/**"
+
+# Flag management for different OS environments
+flags:
+  ubuntu-latest:
+    carryforward: true
+
+  windows-latest:
+    carryforward: true
+
+  macos-latest:
+    carryforward: true
+
+# Comment configuration for pull requests
+comment:
+  layout: "header, diff, flags, components, files, footer"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
