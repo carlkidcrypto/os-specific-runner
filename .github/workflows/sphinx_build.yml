@@ -1,0 +1,81 @@
+name: "Sphinx Docs Build"
+
+on:
+  push:
+    branches: [ main ]
+
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+jobs:
+  sphinx_docs_build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up Python 3.12 env for sphinx...
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-sphinx-${{ hashFiles('sphinx_docs_build/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-sphinx-
+            ${{ runner.os }}-pip-
+
+      - name: Install jsdoc
+        run: npm install -g jsdoc
+
+      - name: Install Pip Requirements
+        run: |
+          cd ${{ github.workspace }}/sphinx_docs_build
+          # Try to install requirements, if it fails then purge cache and retry
+          if ! pip install -r requirements.txt; then
+            echo "Installation failed, purging pip cache and retrying..."
+            pip install --upgrade pip || true
+            pip cache purge || true
+            pip install -r requirements.txt
+          fi
+
+      - name: Run sphinx...
+        run: |
+          cd ${{ github.workspace }}/sphinx_docs_build
+          mkdir -p source/_static
+          mkdir -p source/_templates
+          make clean && make html SPHINXOPTS="-W"
+
+      - name: Upload artifact for GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+
+  deploy_pages:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: sphinx_docs_build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

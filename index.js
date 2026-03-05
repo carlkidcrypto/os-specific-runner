@@ -10,6 +10,12 @@ import { randomUUID } from 'crypto';
 
 import { formatShell, getTempWorkingDir, fileExtensions, builtInShells } from './lib.js';
 
+/**
+ * Main GitHub Action entry point. Reads the OS-specific command and shell
+ * inputs, writes the command to a temp file, then executes it via the
+ * configured shell.
+ * @returns {Promise<void>}
+ */
 async function body() {
     try {
         let command = '';
