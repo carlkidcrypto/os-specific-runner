@@ -7,9 +7,25 @@ permissions:
 on:
   push:
     branches: [ main, master ]
+    paths:
+      - 'index.js'
+      - 'lib.js'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'babel.config.cjs'
+      - '.github/workflows/unit_tests.yml'
 
   pull_request:
     branches: [ main, master ]
+    paths:
+      - 'index.js'
+      - 'lib.js'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'babel.config.cjs'
+      - '.github/workflows/unit_tests.yml'
 
 jobs:
   unit_tests:
