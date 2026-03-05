@@ -24,8 +24,17 @@ export function getTempWorkingDir(working_directory) {
     return join(tmpdir(), working_directory);
 }
 
+/**
+ * Maps shell name to the file extension used for the temporary script file.
+ * @type {Object.<string, string>}
+ */
 export const fileExtensions = { cmd: '.cmd', pwsh: '.ps1', powershell: '.ps1', python: '.py', python3: '.py' };
 
+/**
+ * Maps built-in shell names to their command templates.
+ * The placeholder ``{0}`` is replaced with the path to the temporary script file.
+ * @type {Object.<string, string>}
+ */
 export const builtInShells = {
     bash: 'bash --noprofile --norc -eo pipefail {0}',
     pwsh: 'pwsh -command "& \'{0}\'"',
