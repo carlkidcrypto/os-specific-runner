@@ -53,6 +53,14 @@ describe('fileExtensions', () => {
     test('bash has no file extension', () => {
         expect(fileExtensions['bash']).toBeUndefined();
     });
+
+    test('python maps to .py', () => {
+        expect(fileExtensions['python']).toBe('.py');
+    });
+
+    test('python3 maps to .py', () => {
+        expect(fileExtensions['python3']).toBe('.py');
+    });
 });
 
 describe('builtInShells', () => {
@@ -76,8 +84,59 @@ describe('builtInShells', () => {
     });
 
     test('all shells have a template defined', () => {
-        for (const shell of ['bash', 'pwsh', 'python', 'sh', 'cmd', 'powershell', 'zsh']) {
+        for (const shell of ['bash', 'pwsh', 'python', 'python3', 'sh', 'cmd', 'powershell', 'zsh']) {
             expect(builtInShells[shell]).toBeDefined();
         }
+    });
+
+    test('python template formats correctly', () => {
+        expect(formatShell(builtInShells['python'], '/tmp/script.py'))
+            .toBe('python /tmp/script.py');
+    });
+
+    test('python3 template formats correctly', () => {
+        expect(formatShell(builtInShells['python3'], '/tmp/script.py'))
+            .toBe('python3 /tmp/script.py');
+    });
+
+    test('sh template formats correctly', () => {
+        expect(formatShell(builtInShells['sh'], '/tmp/script.sh'))
+            .toBe('sh -e /tmp/script.sh');
+    });
+
+    test('zsh template formats correctly', () => {
+        expect(formatShell(builtInShells['zsh'], '/tmp/script.sh'))
+            .toBe('zsh -e /tmp/script.sh');
+    });
+});
+
+describe('platform inputs and default shells', () => {
+    test('aix default shell is sh', () => {
+        // sh is universally available on AIX
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('freebsd default shell is sh', () => {
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('openbsd default shell is sh', () => {
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('sunos default shell is sh', () => {
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('linux default shell is bash', () => {
+        expect(builtInShells['bash']).toBeDefined();
+    });
+
+    test('macos default shell is zsh', () => {
+        expect(builtInShells['zsh']).toBeDefined();
+    });
+
+    test('windows default shell is pwsh', () => {
+        expect(builtInShells['pwsh']).toBeDefined();
     });
 });

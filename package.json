@@ -1,7 +1,7 @@
 {
   "name": "os-specific-runner",
   "version": "2.2.0",
-  "description": "A github action for running a separate command based on the os",
+  "description": "GitHub Action that runs a different shell command per OS (Linux, macOS, Windows, AIX, FreeBSD, OpenBSD, SunOS) with configurable shells including bash, zsh, sh, pwsh, cmd, and python",
   "main": "index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
@@ -12,16 +12,28 @@
     "url": "git+https://github.com/carlkidcrypto/os-specific-runner.git"
   },
   "keywords": [
+    "github-action",
+    "github-actions",
     "os-specific-runner",
-    "os specific runner",
     "os-specific-run",
-    "os specific run",
-    "os",
-    "specific",
-    "run",
-    "runner",
-    "commands",
-    "utilities"
+    "cross-platform",
+    "multi-platform",
+    "platform-detection",
+    "linux",
+    "macos",
+    "windows",
+    "aix",
+    "freebsd",
+    "openbsd",
+    "sunos",
+    "bash",
+    "zsh",
+    "pwsh",
+    "powershell",
+    "shell",
+    "ci",
+    "cd",
+    "automation"
   ],
   "author": "carlkidcrypto",
   "license": "MIT",
@@ -29,6 +41,9 @@
     "url": "https://github.com/carlkidcrypto/os-specific-runner/issues"
   },
   "homepage": "https://github.com/carlkidcrypto/os-specific-runner#readme",
+  "engines": {
+    "node": ">=24"
+  },
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/exec": "^3.0.0",

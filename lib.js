@@ -24,12 +24,13 @@ export function getTempWorkingDir(working_directory) {
     return join(tmpdir(), working_directory);
 }
 
-export const fileExtensions = { cmd: '.cmd', pwsh: '.ps1', powershell: '.ps1' };
+export const fileExtensions = { cmd: '.cmd', pwsh: '.ps1', powershell: '.ps1', python: '.py', python3: '.py' };
 
 export const builtInShells = {
     bash: 'bash --noprofile --norc -eo pipefail {0}',
     pwsh: 'pwsh -command "& \'{0}\'"',
     python: 'python {0}',
+    python3: 'python3 {0}',
     sh: 'sh -e {0}',
     cmd: 'cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""',
     powershell: 'powershell -command "& \'{0}\'"',

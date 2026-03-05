@@ -5,9 +5,21 @@ permissions:
 on:
   push:
     branches: [ main, master ]
+    paths:
+      - 'action.yml'
+      - 'dist/index.js'
+      - 'index.js'
+      - 'lib.js'
+      - '.github/workflows/integration_tests.yml'
 
   pull_request:
     branches: [ main, master ]
+    paths:
+      - 'action.yml'
+      - 'dist/index.js'
+      - 'index.js'
+      - 'lib.js'
+      - '.github/workflows/integration_tests.yml'
 
 jobs:
   integration_tests:

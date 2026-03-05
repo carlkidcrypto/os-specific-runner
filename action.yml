@@ -2,6 +2,16 @@ name: "OS specific runner"
 description: "Run a command based on the OS."
 author: carlkidcrypto
 inputs:
+  aix: # id of input
+    description: "aix commandline"
+    required: false
+    default: 'echo "No command specified for aix"'
+
+  freebsd: # id of input
+    description: "freebsd commandline"
+    required: false
+    default: 'echo "No command specified for freebsd"'
+
   linux: # id of input
     description: "linux commandline"
     required: false
@@ -12,23 +22,53 @@ inputs:
     required: false
     default: 'echo "No command specified for macos"'
 
+  openbsd: # id of input
+    description: "openbsd commandline"
+    required: false
+    default: 'echo "No command specified for openbsd"'
+
+  sunos: # id of input
+    description: "sunos commandline"
+    required: false
+    default: 'echo "No command specified for sunos"'
+
   windows: # id of input
     description: "windows commandline"
     required: false
     default: 'echo "No command specified for windows"'
 
+  aixShell: # id of input
+    description: "aix commandline shell (e.g. sh, bash, python, python3)"
+    required: false
+    default: "sh"
+
+  freebsdShell: # id of input
+    description: "freebsd commandline shell (e.g. sh, bash, python, python3)"
+    required: false
+    default: "sh"
+
   linuxShell: # id of input
-    description: "linux commandline shell"
+    description: "linux commandline shell (e.g. bash, sh, python, python3)"
     required: false
     default: "bash"
 
   macosShell: # id of input
-    description: "macos commandline shell"
+    description: "macos commandline shell (e.g. zsh, bash, python, python3)"
     required: false
     default: "zsh"
 
+  openbsdShell: # id of input
+    description: "openbsd commandline shell (e.g. sh, bash, python, python3)"
+    required: false
+    default: "sh"
+
+  sunosShell: # id of input
+    description: "sunos commandline shell (e.g. sh, bash, python, python3)"
+    required: false
+    default: "sh"
+
   windowsShell: # id of input
-    description: "windows commandline shell"
+    description: "windows commandline shell (e.g. pwsh, powershell, cmd, python, python3)"
     required: false
     default: "pwsh"
 
@@ -41,5 +81,5 @@ branding:
   icon: list
   color: red
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
