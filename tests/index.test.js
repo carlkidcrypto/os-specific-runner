@@ -53,6 +53,14 @@ describe('fileExtensions', () => {
     test('bash has no file extension', () => {
         expect(fileExtensions['bash']).toBeUndefined();
     });
+
+    test('python maps to .py', () => {
+        expect(fileExtensions['python']).toBe('.py');
+    });
+
+    test('python3 maps to .py', () => {
+        expect(fileExtensions['python3']).toBe('.py');
+    });
 });
 
 describe('builtInShells', () => {
@@ -76,9 +84,19 @@ describe('builtInShells', () => {
     });
 
     test('all shells have a template defined', () => {
-        for (const shell of ['bash', 'pwsh', 'python', 'sh', 'cmd', 'powershell', 'zsh']) {
+        for (const shell of ['bash', 'pwsh', 'python', 'python3', 'sh', 'cmd', 'powershell', 'zsh']) {
             expect(builtInShells[shell]).toBeDefined();
         }
+    });
+
+    test('python template formats correctly', () => {
+        expect(formatShell(builtInShells['python'], '/tmp/script.py'))
+            .toBe('python /tmp/script.py');
+    });
+
+    test('python3 template formats correctly', () => {
+        expect(formatShell(builtInShells['python3'], '/tmp/script.py'))
+            .toBe('python3 /tmp/script.py');
     });
 
     test('sh template formats correctly', () => {

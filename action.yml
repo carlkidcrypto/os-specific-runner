@@ -38,37 +38,37 @@ inputs:
     default: 'echo "No command specified for windows"'
 
   aixShell: # id of input
-    description: "aix commandline shell"
+    description: "aix commandline shell (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   freebsdShell: # id of input
-    description: "freebsd commandline shell"
+    description: "freebsd commandline shell (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   linuxShell: # id of input
-    description: "linux commandline shell"
+    description: "linux commandline shell (e.g. bash, sh, python, python3)"
     required: false
     default: "bash"
 
   macosShell: # id of input
-    description: "macos commandline shell"
+    description: "macos commandline shell (e.g. zsh, bash, python, python3)"
     required: false
     default: "zsh"
 
   openbsdShell: # id of input
-    description: "openbsd commandline shell"
+    description: "openbsd commandline shell (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   sunosShell: # id of input
-    description: "sunos commandline shell"
+    description: "sunos commandline shell (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   windowsShell: # id of input
-    description: "windows commandline shell"
+    description: "windows commandline shell (e.g. pwsh, powershell, cmd, python, python3)"
     required: false
     default: "pwsh"
 

@@ -60,15 +60,15 @@ Override the shell used to execute a platform's command. Any value accepted by t
 [`shell` field](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell)
 works here, including custom shell paths.
 
-| Input          | Default  | Available choices                      |
-|----------------|----------|----------------------------------------|
-| `linuxShell`   | `bash`   | `bash`, `sh`, `python`, or any path    |
-| `macosShell`   | `zsh`    | `zsh`, `bash`, `python`, or any path   |
-| `windowsShell` | `pwsh`   | `pwsh`, `powershell`, `cmd`, `python`  |
-| `aixShell`     | `sh`     | `sh`, `bash`, or any path              |
-| `freebsdShell` | `sh`     | `sh`, `bash`, or any path              |
-| `openbsdShell` | `sh`     | `sh`, `bash`, or any path              |
-| `sunosShell`   | `sh`     | `sh`, `bash`, or any path              |
+| Input          | Default  | Available choices                                |
+|----------------|----------|--------------------------------------------------|
+| `linuxShell`   | `bash`   | `bash`, `sh`, `python`, `python3`, or any path   |
+| `macosShell`   | `zsh`    | `zsh`, `bash`, `python`, `python3`, or any path  |
+| `windowsShell` | `pwsh`   | `pwsh`, `powershell`, `cmd`, `python`, `python3` |
+| `aixShell`     | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
+| `freebsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
+| `openbsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
+| `sunosShell`   | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
 
 **Built-in shell templates** (expanded automatically when you use one of these names):
 
@@ -81,6 +81,7 @@ works here, including custom shell paths.
 | `powershell`  | `powershell -command "& '{0}'"`                |
 | `cmd`         | `cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""` |
 | `python`      | `python {0}`                                   |
+| `python3`     | `python3 {0}`                                  |
 
 Any other value is passed through as a raw shell command string.
 
@@ -144,15 +145,15 @@ Override the default shell per platform using the `*Shell` inputs:
 
 ### Running a Python script
 
-Set any platform's shell to `python` to execute the command string as Python code directly:
+Set any platform's shell to `python3` (Linux/macOS) or `python` (Windows) to execute the command string as Python code directly. The script is saved to a temporary `.py` file and passed to the interpreter:
 
 ```yaml
     - uses: carlkidcrypto/os-specific-runner@v2.2.0
       with:
         linux:        "import platform; print('Linux, Python', platform.python_version())"
-        linuxShell:   python
+        linuxShell:   python3
         macos:        "import platform; print('macOS, Python', platform.python_version())"
-        macosShell:   python
+        macosShell:   python3
         windows:      "import platform; print('Windows, Python', platform.python_version())"
         windowsShell: python
 ```
