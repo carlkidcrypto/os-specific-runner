@@ -29,6 +29,9 @@
     "url": "https://github.com/carlkidcrypto/os-specific-runner/issues"
   },
   "homepage": "https://github.com/carlkidcrypto/os-specific-runner#readme",
+  "engines": {
+    "node": ">=24"
+  },
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/exec": "^3.0.0",
