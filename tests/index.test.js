@@ -80,4 +80,45 @@ describe('builtInShells', () => {
             expect(builtInShells[shell]).toBeDefined();
         }
     });
+
+    test('sh template formats correctly', () => {
+        expect(formatShell(builtInShells['sh'], '/tmp/script.sh'))
+            .toBe('sh -e /tmp/script.sh');
+    });
+
+    test('zsh template formats correctly', () => {
+        expect(formatShell(builtInShells['zsh'], '/tmp/script.sh'))
+            .toBe('zsh -e /tmp/script.sh');
+    });
+});
+
+describe('platform inputs and default shells', () => {
+    test('aix default shell is sh', () => {
+        // sh is universally available on AIX
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('freebsd default shell is sh', () => {
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('openbsd default shell is sh', () => {
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('sunos default shell is sh', () => {
+        expect(builtInShells['sh']).toBeDefined();
+    });
+
+    test('linux default shell is bash', () => {
+        expect(builtInShells['bash']).toBeDefined();
+    });
+
+    test('macos default shell is zsh', () => {
+        expect(builtInShells['zsh']).toBeDefined();
+    });
+
+    test('windows default shell is pwsh', () => {
+        expect(builtInShells['pwsh']).toBeDefined();
+    });
 });

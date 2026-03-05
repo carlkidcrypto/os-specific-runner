@@ -2,6 +2,16 @@ name: "OS specific runner"
 description: "Run a command based on the OS."
 author: carlkidcrypto
 inputs:
+  aix: # id of input
+    description: "aix commandline"
+    required: false
+    default: 'echo "No command specified for aix"'
+
+  freebsd: # id of input
+    description: "freebsd commandline"
+    required: false
+    default: 'echo "No command specified for freebsd"'
+
   linux: # id of input
     description: "linux commandline"
     required: false
@@ -12,10 +22,30 @@ inputs:
     required: false
     default: 'echo "No command specified for macos"'
 
+  openbsd: # id of input
+    description: "openbsd commandline"
+    required: false
+    default: 'echo "No command specified for openbsd"'
+
+  sunos: # id of input
+    description: "sunos commandline"
+    required: false
+    default: 'echo "No command specified for sunos"'
+
   windows: # id of input
     description: "windows commandline"
     required: false
     default: 'echo "No command specified for windows"'
+
+  aixShell: # id of input
+    description: "aix commandline shell"
+    required: false
+    default: "sh"
+
+  freebsdShell: # id of input
+    description: "freebsd commandline shell"
+    required: false
+    default: "sh"
 
   linuxShell: # id of input
     description: "linux commandline shell"
@@ -26,6 +56,16 @@ inputs:
     description: "macos commandline shell"
     required: false
     default: "zsh"
+
+  openbsdShell: # id of input
+    description: "openbsd commandline shell"
+    required: false
+    default: "sh"
+
+  sunosShell: # id of input
+    description: "sunos commandline shell"
+    required: false
+    default: "sh"
 
   windowsShell: # id of input
     description: "windows commandline shell"

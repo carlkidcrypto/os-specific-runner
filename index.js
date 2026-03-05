@@ -23,12 +23,24 @@ async function body() {
         // https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
 
         const platform = _platform();
-        if (platform === 'darwin') {
+        if (platform === 'aix') {
+            command = getInput('aix');
+            unformattedShell = getInput('aixShell');
+        } else if (platform === 'darwin') {
             command = getInput('macos');
             unformattedShell = getInput('macosShell');
+        } else if (platform === 'freebsd') {
+            command = getInput('freebsd');
+            unformattedShell = getInput('freebsdShell');
         } else if (platform === 'linux') {
             command = getInput('linux');
             unformattedShell = getInput('linuxShell');
+        } else if (platform === 'openbsd') {
+            command = getInput('openbsd');
+            unformattedShell = getInput('openbsdShell');
+        } else if (platform === 'sunos') {
+            command = getInput('sunos');
+            unformattedShell = getInput('sunosShell');
         } else if (platform === 'win32') {
             command = getInput('windows');
             unformattedShell = getInput('windowsShell');
