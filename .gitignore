@@ -2,5 +2,5 @@ node_modules/**
 coverage/
 docs/doctrees/
 docs/html/
-docs/_static/
 docs/html_v*/.doctrees/
+sphinx_docs_build/landing/.doctrees/

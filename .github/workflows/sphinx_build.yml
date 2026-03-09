@@ -54,6 +54,7 @@ jobs:
             pip cache purge || true
             pip install -r requirements.txt
           fi
+          pip install -r ${{ github.workspace }}/sphinx_docs_build/landing/requirements.txt
 
       - name: Run sphinx (latest)
         run: |
@@ -62,8 +63,12 @@ jobs:
           mkdir -p source/_templates
           make clean && make html SPHINXOPTS="-W"
 
-      - name: Copy static assets for docs/index.html
-        run: cp -r ${{ github.workspace }}/docs/html/_static ${{ github.workspace }}/docs/_static
+      - name: Build landing page
+        run: |
+          cd ${{ github.workspace }}/sphinx_docs_build/landing
+          mkdir -p source/_static
+          mkdir -p source/_templates
+          make html SPHINXOPTS="-W"
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v4
@@ -129,6 +134,7 @@ jobs:
             pip cache purge || true
             pip install -r requirements.txt
           fi
+          pip install -r ${{ github.workspace }}/sphinx_docs_build/landing/requirements.txt
 
       - name: Build versioned docs
         run: |
@@ -148,10 +154,10 @@ jobs:
           VERSION="${{ github.event.release.tag_name }}"
           cp -r "/tmp/html_${VERSION}/" "${{ github.workspace }}/docs/html_${VERSION}/"
 
-      - name: Update docs/index.html with new version
+      - name: Update landing page version list
         run: |
           python3 - <<'EOF'
-          import re, pathlib, os
+          import re, pathlib
 
           docs_dir = pathlib.Path("docs")
 
@@ -162,25 +168,31 @@ jobs:
               reverse=True
           )
 
-          # Build <li> entries (same markup used in both sidebar and article)
-          li_items = ['              <li><a href="./html/index.html">Latest Alpha/Beta Version</a></li>']
+          # Build RST list entries
+          rst_items = ["* `Latest Alpha/Beta Version <./html/index.html>`_"]
           for v in versions:
               ver = v.replace("html_", "")  # e.g. "v2.3.0"
-              li_items.append(
-                  f'              <li><a href="./{v}/index.html">{ver}</a></li>'
-              )
-          versions_html = "\n".join(li_items)
+              rst_items.append(f"* `{ver} <./{v}/index.html>`_")
+          versions_rst = "\n".join(rst_items)
 
-          html = docs_dir.joinpath("index.html").read_text()
-          html = re.sub(
-              r'<!-- VERSION_LIST_START -->.*?<!-- VERSION_LIST_END -->',
-              f'<!-- VERSION_LIST_START -->\n{versions_html}\n              <!-- VERSION_LIST_END -->',
-              html,
+          index_rst = pathlib.Path("sphinx_docs_build/landing/source/index.rst")
+          content = index_rst.read_text()
+          content = re.sub(
+              r'\.\. VERSION_LIST_START\n.*?\.\. VERSION_LIST_END',
+              f'.. VERSION_LIST_START\n\n{versions_rst}\n\n.. VERSION_LIST_END',
+              content,
               flags=re.DOTALL,
           )
-          docs_dir.joinpath("index.html").write_text(html)
-          print("Updated docs/index.html with versions:", versions)
+          index_rst.write_text(content)
+          print("Updated landing/source/index.rst with versions:", versions)
           EOF
+
+      - name: Build landing page with updated version list
+        run: |
+          cd ${{ github.workspace }}/sphinx_docs_build/landing
+          mkdir -p source/_static
+          mkdir -p source/_templates
+          make html
 
       - name: Commit and push versioned docs
         run: |
@@ -188,7 +200,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "docs/html_${VERSION}/"
-          git add docs/index.html
+          git add sphinx_docs_build/landing/source/index.rst
+          git add docs/index.html docs/.buildinfo docs/_static docs/_sources docs/genindex.html docs/search.html docs/searchindex.js docs/objects.inv
           git diff --cached --quiet && echo "Nothing to commit" || \
             git commit -m "docs: add versioned documentation for ${VERSION}"
           git push origin main
