@@ -9,7 +9,9 @@ on:
   workflow_dispatch:
 
 jobs:
+  # ── Build latest docs on push to main ─────────────────────────────────────
   sphinx_docs_build:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -53,21 +55,23 @@ jobs:
             pip install -r requirements.txt
           fi
 
-      - name: Run sphinx...
+      - name: Run sphinx (latest)
         run: |
           cd ${{ github.workspace }}/sphinx_docs_build
           mkdir -p source/_static
           mkdir -p source/_templates
           make clean && make html SPHINXOPTS="-W"
 
+      - name: Copy static assets for docs/index.html
+        run: cp -r ${{ github.workspace }}/docs/html/_static ${{ github.workspace }}/docs/_static
+
       - name: Upload artifact for GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs/
 
   deploy_pages:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: sphinx_docs_build
     runs-on: ubuntu-latest
     permissions:
@@ -79,3 +83,112 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # ── Build versioned docs on release and commit back to main ───────────────
+  sphinx_docs_build_release:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository code at release tag
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set up Python 3.12 env for sphinx...
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-sphinx-${{ hashFiles('sphinx_docs_build/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-sphinx-
+            ${{ runner.os }}-pip-
+
+      - name: Install jsdoc
+        run: npm install -g jsdoc
+
+      - name: Install Pip Requirements
+        run: |
+          cd ${{ github.workspace }}/sphinx_docs_build
+          if ! pip install -r requirements.txt; then
+            echo "Installation failed, purging pip cache and retrying..."
+            pip install --upgrade pip || true
+            pip cache purge || true
+            pip install -r requirements.txt
+          fi
+
+      - name: Build versioned docs
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          cd ${{ github.workspace }}/sphinx_docs_build
+          mkdir -p source/_static source/_templates
+          sphinx-build -b html -W source/ "/tmp/html_${VERSION}/"
+
+      - name: Switch to main branch
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull origin main
+
+      - name: Copy versioned docs into docs/
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          cp -r "/tmp/html_${VERSION}/" "${{ github.workspace }}/docs/html_${VERSION}/"
+
+      - name: Update docs/index.html with new version
+        run: |
+          python3 - <<'EOF'
+          import re, pathlib, os
+
+          docs_dir = pathlib.Path("docs")
+
+          # Collect all versioned dirs, newest first
+          versions = sorted(
+              [d.name for d in docs_dir.iterdir()
+               if d.is_dir() and d.name.startswith("html_v")],
+              reverse=True
+          )
+
+          # Build <li> entries (same markup used in both sidebar and article)
+          li_items = ['              <li><a href="./html/index.html">Latest Alpha/Beta Version</a></li>']
+          for v in versions:
+              ver = v.replace("html_", "")  # e.g. "v2.3.0"
+              li_items.append(
+                  f'              <li><a href="./{v}/index.html">{ver}</a></li>'
+              )
+          versions_html = "\n".join(li_items)
+
+          html = docs_dir.joinpath("index.html").read_text()
+          html = re.sub(
+              r'<!-- VERSION_LIST_START -->.*?<!-- VERSION_LIST_END -->',
+              f'<!-- VERSION_LIST_START -->\n{versions_html}\n              <!-- VERSION_LIST_END -->',
+              html,
+              flags=re.DOTALL,
+          )
+          docs_dir.joinpath("index.html").write_text(html)
+          print("Updated docs/index.html with versions:", versions)
+          EOF
+
+      - name: Commit and push versioned docs
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/html_${VERSION}/"
+          git add docs/index.html
+          git diff --cached --quiet && echo "Nothing to commit" || \
+            git commit -m "docs: add versioned documentation for ${VERSION}"
+          git push origin main
