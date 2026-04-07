@@ -63,7 +63,7 @@ Generate and open a changelog update PR only when substantive changelog content 
      5) Final fallback: use the repository root commit (`git rev-list --max-parents=0 HEAD`).
    - Validate that base and current are not equal; if equal, walk backward one more release/tag.
    - Extract commit titles and full commit messages from `<base>..<current>` using local git only:
-     - `git log <base>..<current> --pretty=format:"%H%x09%s%x09%b"`
+     - `git log <base>..<current> --pretty=format:"%H%x09%s%x09%b"` (fields are tab-separated: hash, subject, body)
    - For each commit, collect changed files from local git and use paths to infer impact areas:
      - `git show --name-only --pretty="" <hash>`
    - If commit messages reference PRs or issue numbers, include those references in your reasoning.

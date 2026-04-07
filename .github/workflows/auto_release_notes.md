@@ -104,7 +104,7 @@ When a new release is published, generate and update its release notes body on G
 
 ## Release Notes Body Format
 
-```
+````
 <One or two sentence summary of the release.>
 
 Compared to: <base_tag_or_root_commit>
@@ -160,7 +160,7 @@ Or browse this release on GitHub: https://github.com/carlkidcrypto/os-specific-r
 ---
 
 **Full Changelog**: https://github.com/carlkidcrypto/os-specific-runner/compare/<base_tag>...<current_tag>
-```
+````
 
 ## Constraints
 

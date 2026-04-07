@@ -2,7 +2,8 @@
 name: Docs Continuous Improvement Every 3 Days
 on:
   workflow_dispatch:
-  schedule: every 3 days
+  schedule:
+    - cron: "0 0 */3 * *"
   skip-if-match:
     query: 'is:pr is:open head:automation/docs-continuous-improvement label:documentation label:automated-pr'
 permissions:
