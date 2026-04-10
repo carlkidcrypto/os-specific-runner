@@ -1,0 +1,26 @@
+name: Coverage Autofix Every 3 Days
+
+on:
+  schedule:
+    - cron: "0 9 */3 * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/coverage_autofix_every_3_days.yml'
+      - '.github/workflows/coverage_autofix_every_3_days.md'
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  copilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: github/copilot-coding-agent@v1
+        with:
+          prompt-file: .github/workflows/coverage_autofix_every_3_days.md
+          skip-if-match: 'is:pr is:open head:automation/coverage-autofix-every-3-days label:automated-pr'

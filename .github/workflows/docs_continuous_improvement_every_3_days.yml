@@ -1,0 +1,25 @@
+name: Docs Continuous Improvement Every 3 Days
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 */3 * *"
+  push:
+    paths:
+      - '.github/workflows/docs_continuous_improvement_every_3_days.yml'
+      - '.github/workflows/docs_continuous_improvement_every_3_days.md'
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+
+jobs:
+  copilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: github/copilot-coding-agent@v1
+        with:
+          prompt-file: .github/workflows/docs_continuous_improvement_every_3_days.md
+          skip-if-match: 'is:pr is:open head:automation/docs-continuous-improvement label:documentation label:automated-pr'
