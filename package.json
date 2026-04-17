@@ -1,6 +1,6 @@
 {
   "name": "os-specific-runner",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "GitHub Action that runs a different shell command per OS (Linux, macOS, Windows, AIX, FreeBSD, OpenBSD, SunOS) with configurable shells including bash, zsh, sh, pwsh, cmd, and python",
   "main": "index.js",
   "scripts": {

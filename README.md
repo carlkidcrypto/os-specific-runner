@@ -8,7 +8,7 @@ This version (2.2.0 and beyond) will attempt to stay up to date on the latest ve
 | [![unit_tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml) | [![integration_tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) |
 | --------------- | --------------- | --------------- |
 | [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![codecov](https://codecov.io/gh/carlkidcrypto/os-specific-runner/graph/badge.svg)](https://codecov.io/gh/carlkidcrypto/os-specific-runner) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) |
-| [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.2.0/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.2.0) | | |
+| [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2.3.0/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2.3.0) | | |
 
 ## AI Contributions
 
@@ -23,7 +23,7 @@ See [HOWTOAI.rst](HOWTOAI.rst) for a practical guide on using AI coding assistan
 A GitHub Action that runs a different shell command depending on which OS the runner is using. The platform is detected via Node.js [`os.platform()`](https://nodejs.org/api/os.html#osplatform). All 7 platforms supported by that API are covered.
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         linux:   echo "Hi from Linux"
         macos:   echo "Hi from macOS"
@@ -98,7 +98,7 @@ Any other value is passed through as a raw shell command string.
 The three standard GitHub-hosted runners (Linux, macOS, Windows):
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         linux:   echo "Hello from Linux"
         macos:   echo "Hello from macOS"
@@ -110,7 +110,7 @@ The three standard GitHub-hosted runners (Linux, macOS, Windows):
 Use YAML's `|` block-scalar syntax to write multi-line scripts:
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         linux: |
           echo "Setting up on Linux..."
@@ -133,7 +133,7 @@ Use YAML's `|` block-scalar syntax to write multi-line scripts:
 Override the default shell per platform using the `*Shell` inputs:
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         linux:        echo "Running under sh on Linux"
         linuxShell:   sh
@@ -148,7 +148,7 @@ Override the default shell per platform using the `*Shell` inputs:
 Set any platform's shell to `python3` (Linux/macOS) or `python` (Windows) to execute the command string as Python code directly. The script is saved to a temporary `.py` file and passed to the interpreter:
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         linux:        "import platform; print('Linux, Python', platform.python_version())"
         linuxShell:   python3
@@ -165,7 +165,7 @@ Use `working_directory` to run commands from a specific path in your repository:
 ```yaml
     - uses: actions/checkout@v4
 
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         working_directory: ./scripts
         linux: bash build.sh
@@ -178,7 +178,7 @@ Use `working_directory` to run commands from a specific path in your repository:
 A snippet that covers every platform supported by `os.platform()`, useful when targeting self-hosted exotic runners:
 
 ```yaml
-    - uses: carlkidcrypto/os-specific-runner@v2.2.0
+    - uses: carlkidcrypto/os-specific-runner@v2.3.0
       with:
         linux:   echo "Linux runner"
         macos:   echo "macOS runner"
@@ -217,7 +217,7 @@ jobs:
           node-version: '24'
 
       - name: Install dependencies
-        uses: carlkidcrypto/os-specific-runner@v2.2.0
+        uses: carlkidcrypto/os-specific-runner@v2.3.0
         with:
           working_directory: ./app
           linux: |
@@ -231,7 +231,7 @@ jobs:
             Write-Host "Windows deps installed"
 
       - name: Build
-        uses: carlkidcrypto/os-specific-runner@v2.2.0
+        uses: carlkidcrypto/os-specific-runner@v2.3.0
         with:
           working_directory: ./app
           linux:   npm run build
