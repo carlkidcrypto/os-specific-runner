@@ -4,8 +4,13 @@ permissions:
   contents: write
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [ main, master ]
+    paths:
+      - 'index.js'
+      - 'package.json'
+      - 'package-lock.json'
 
 jobs:
   regenerate_dist-index_js:
