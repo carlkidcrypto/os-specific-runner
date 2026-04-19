@@ -4,7 +4,7 @@ How to Use AI with os-specific-runner
 *A practical guide for contributing to os-specific-runner using AI coding assistants*
 
 ``os-specific-runner`` is a focused, single-purpose GitHub Action written in JavaScript
-(ES modules, Node.js 20). AI tools can meaningfully accelerate contributions, but every
+(ES modules, Node.js 24). AI tools can meaningfully accelerate contributions, but every
 contributor is responsible for understanding and owning the code they submit. Whether you
 use GitHub Copilot, Cursor, Claude, or another assistant, this guide will help you
 contribute effectively.
@@ -104,7 +104,7 @@ Working with AI on os-specific-runner
 
 * Keep sensitive data out of prompts — there are no credentials in this repo, but
   avoid pasting real workflow files that contain secrets from other projects
-* Give the AI the full picture: mention that this is a **Node.js 20 GitHub Action
+* Give the AI the full picture: mention that this is a **Node.js 24 GitHub Action
   using ES modules**, that ``dist/index.js`` is a compiled bundle, and that the
   action must work identically on Linux, macOS, and Windows
 * When asking about shell behaviour, specify which shell and platform you are
@@ -194,7 +194,7 @@ JavaScript / Node.js Configuration
 
 .. code-block:: text
 
-   This is a GitHub Action written in JavaScript ES modules targeting Node.js 20.
+   This is a GitHub Action written in JavaScript ES modules targeting Node.js 24.
    Key files:
      - index.js  : entry point; detects OS, reads inputs, writes temp script, executes it
      - lib.js    : pure helper exports (formatShell, getTempWorkingDir, fileExtensions, builtInShells)
@@ -220,7 +220,7 @@ The action has three source files that each play a distinct role:
 
 .. code-block::
 
-   action.yml          ← declares inputs, defaults, and the Node.js 20 runtime
+   action.yml          ← declares inputs, defaults, and the Node.js 24 runtime
        │
        ▼
    index.js            ← entry point: reads inputs, detects OS, writes script to temp
