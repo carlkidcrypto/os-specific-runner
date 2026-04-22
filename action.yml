@@ -3,77 +3,77 @@ description: "Run a command based on the OS."
 author: carlkidcrypto
 inputs:
   aix: # id of input
-    description: "aix commandline"
+    description: "Shell command to run on AIX"
     required: false
     default: 'echo "No command specified for aix"'
 
   freebsd: # id of input
-    description: "freebsd commandline"
+    description: "Shell command to run on FreeBSD"
     required: false
     default: 'echo "No command specified for freebsd"'
 
   linux: # id of input
-    description: "linux commandline"
+    description: "Shell command to run on Linux"
     required: false
     default: 'echo "No command specified for linux"'
 
   macos: # id of input
-    description: "macos commandline"
+    description: "Shell command to run on macOS"
     required: false
     default: 'echo "No command specified for macos"'
 
   openbsd: # id of input
-    description: "openbsd commandline"
+    description: "Shell command to run on OpenBSD"
     required: false
     default: 'echo "No command specified for openbsd"'
 
   sunos: # id of input
-    description: "sunos commandline"
+    description: "Shell command to run on SunOS"
     required: false
     default: 'echo "No command specified for sunos"'
 
   windows: # id of input
-    description: "windows commandline"
+    description: "Shell command to run on Windows"
     required: false
     default: 'echo "No command specified for windows"'
 
   aixShell: # id of input
-    description: "aix commandline shell (e.g. sh, bash, python, python3)"
+    description: "Shell to use on AIX (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   freebsdShell: # id of input
-    description: "freebsd commandline shell (e.g. sh, bash, python, python3)"
+    description: "Shell to use on FreeBSD (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   linuxShell: # id of input
-    description: "linux commandline shell (e.g. bash, sh, python, python3)"
+    description: "Shell to use on Linux (e.g. bash, sh, python, python3)"
     required: false
     default: "bash"
 
   macosShell: # id of input
-    description: "macos commandline shell (e.g. zsh, bash, python, python3)"
+    description: "Shell to use on macOS (e.g. zsh, bash, python, python3)"
     required: false
     default: "zsh"
 
   openbsdShell: # id of input
-    description: "openbsd commandline shell (e.g. sh, bash, python, python3)"
+    description: "Shell to use on OpenBSD (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   sunosShell: # id of input
-    description: "sunos commandline shell (e.g. sh, bash, python, python3)"
+    description: "Shell to use on SunOS (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
   windowsShell: # id of input
-    description: "windows commandline shell (e.g. pwsh, powershell, cmd, python, python3)"
+    description: "Shell to use on Windows (e.g. pwsh, powershell, cmd, python, python3)"
     required: false
     default: "pwsh"
 
   working_directory:
-    description: "The path from which to run commands in"
+    description: "Directory path from which to run commands. Leave empty to use a temporary scratch directory."
     required: false
     default: ""
 
