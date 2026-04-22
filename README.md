@@ -1,6 +1,6 @@
 # os-specific-runner
 
-All credit for the original work goes to (KnicKnic). This is a detached-fork of <https://github.com/KnicKnic/os-specific-run>.
+All credit for the original work goes to [KnicKnic](https://github.com/KnicKnic). This is a detached-fork of <https://github.com/KnicKnic/os-specific-run>.
 This version (2.2.0 and beyond) will attempt to stay up to date on the latest version of NPM and other dependencies.
 
 ## Status Badge(s)

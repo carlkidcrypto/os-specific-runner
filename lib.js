@@ -14,8 +14,14 @@ export function formatShell(template, ...args) {
 /**
  * Returns the absolute temp working directory for the given working_directory input.
  * Uses os.tmpdir() so it works cross-platform (Linux, macOS, Windows).
- * @param {string} working_directory
- * @returns {string}
+ *
+ * - When `working_directory` is an empty string, returns
+ *   `<tmpdir>/carlkidcrypto/os-specific-runner` (the action's own scratch space).
+ * - When `working_directory` is non-empty, returns `<tmpdir>/<working_directory>`,
+ *   allowing callers to scope temp files to a named subdirectory.
+ *
+ * @param {string} working_directory - The `working_directory` action input value.
+ * @returns {string} Absolute path to the temp working directory.
  */
 export function getTempWorkingDir(working_directory) {
     if (working_directory === '') {
