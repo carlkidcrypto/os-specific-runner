@@ -95,6 +95,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Check out repository code at release tag
         uses: actions/checkout@v6
@@ -194,14 +195,21 @@ jobs:
           mkdir -p source/_templates
           make html
 
-      - name: Commit and push versioned docs
-        run: |
-          VERSION="${{ github.event.release.tag_name }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "docs/html_${VERSION}/"
-          git add sphinx_docs_build/landing/source/index.rst
-          git add docs/index.html docs/.buildinfo docs/_static docs/_sources docs/genindex.html docs/search.html docs/searchindex.js docs/objects.inv
-          git diff --cached --quiet && echo "Nothing to commit" || \
-            git commit -m "docs: add versioned documentation for ${VERSION}"
-          git push origin main
+      - name: Create Pull Request with versioned docs
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "docs: add versioned documentation for ${{ github.event.release.tag_name }}"
+          branch: "docs/versioned-${{ github.event.release.tag_name }}"
+          title: "docs: add versioned documentation for ${{ github.event.release.tag_name }}"
+          body: "Automated addition of versioned Sphinx documentation for release `${{ github.event.release.tag_name }}`."
+          add-paths: |
+            docs/html_${{ github.event.release.tag_name }}/
+            sphinx_docs_build/landing/source/index.rst
+            docs/index.html
+            docs/.buildinfo
+            docs/_static
+            docs/_sources
+            docs/genindex.html
+            docs/search.html
+            docs/searchindex.js
+            docs/objects.inv
