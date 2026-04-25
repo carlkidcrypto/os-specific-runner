@@ -52,7 +52,7 @@ Best Practices
 Workflow Tips
 ~~~~~~~~~~~~~
 
-* Build and test after every meaningful change: ``npm install && npm test``
+* Build and test after every meaningful change: ``npm test``
 * Regenerate the bundle before opening a PR: ``npm run build``
 * Study how ``formatShell``, ``fileExtensions``, and ``builtInShells`` work together
   in ``lib.js`` before asking AI to modify them
@@ -255,7 +255,7 @@ isolation. All logic that can be expressed as a pure function lives here:
 **``index.js``** ties everything together at runtime:
 
 1. Read ``working_directory`` input and create the temp directory.
-2. Detect the OS with ``os.platform()`` (``'linux'``, ``'darwin'``, ``'win32'``).
+2. Detect the OS with ``os.platform()`` (``'linux'``, ``'darwin'``, ``'win32'``, ``'aix'``, ``'freebsd'``, ``'openbsd'``, ``'sunos'``).
 3. Select the matching command and shell inputs.
 4. Look up the file extension and shell template from ``lib.js``.
 5. Write the command string to a UUID-named temp file.
