@@ -52,7 +52,7 @@ Best Practices
 Workflow Tips
 ~~~~~~~~~~~~~
 
-* Build and test after every meaningful change: ``npm test``
+* Test after every meaningful change: ``npm test``
 * Regenerate the bundle before opening a PR: ``npm run build``
 * Study how ``formatShell``, ``fileExtensions``, and ``builtInShells`` work together
   in ``lib.js`` before asking AI to modify them
