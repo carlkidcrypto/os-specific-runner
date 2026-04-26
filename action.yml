@@ -2,72 +2,72 @@ name: "OS specific runner"
 description: "Run a command based on the OS."
 author: carlkidcrypto
 inputs:
-  aix: # id of input
+  aix:
     description: "Shell command to run on AIX"
     required: false
     default: 'echo "No command specified for aix"'
 
-  freebsd: # id of input
+  freebsd:
     description: "Shell command to run on FreeBSD"
     required: false
     default: 'echo "No command specified for freebsd"'
 
-  linux: # id of input
+  linux:
     description: "Shell command to run on Linux"
     required: false
     default: 'echo "No command specified for linux"'
 
-  macos: # id of input
+  macos:
     description: "Shell command to run on macOS"
     required: false
     default: 'echo "No command specified for macos"'
 
-  openbsd: # id of input
+  openbsd:
     description: "Shell command to run on OpenBSD"
     required: false
     default: 'echo "No command specified for openbsd"'
 
-  sunos: # id of input
+  sunos:
     description: "Shell command to run on SunOS"
     required: false
     default: 'echo "No command specified for sunos"'
 
-  windows: # id of input
+  windows:
     description: "Shell command to run on Windows"
     required: false
     default: 'echo "No command specified for windows"'
 
-  aixShell: # id of input
+  aixShell:
     description: "Shell to use on AIX (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
-  freebsdShell: # id of input
+  freebsdShell:
     description: "Shell to use on FreeBSD (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
-  linuxShell: # id of input
+  linuxShell:
     description: "Shell to use on Linux (e.g. bash, sh, python, python3)"
     required: false
     default: "bash"
 
-  macosShell: # id of input
+  macosShell:
     description: "Shell to use on macOS (e.g. zsh, bash, python, python3)"
     required: false
     default: "zsh"
 
-  openbsdShell: # id of input
+  openbsdShell:
     description: "Shell to use on OpenBSD (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
-  sunosShell: # id of input
+  sunosShell:
     description: "Shell to use on SunOS (e.g. sh, bash, python, python3)"
     required: false
     default: "sh"
 
-  windowsShell: # id of input
+  windowsShell:
     description: "Shell to use on Windows (e.g. pwsh, powershell, cmd, python, python3)"
     required: false
     default: "pwsh"

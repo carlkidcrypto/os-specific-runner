@@ -3,9 +3,9 @@ import { tmpdir } from 'os';
 
 /**
  * Replaces {0}, {1}, … placeholders in a shell template with the provided args.
- * @param {string} template
- * @param {...string} args
- * @returns {string}
+ * @param {string} template - A shell command template containing `{0}`, `{1}`, … placeholders.
+ * @param {...string} args - Replacement values; `args[i]` replaces `{i}`. Missing args produce an empty string.
+ * @returns {string} The template with all placeholders substituted.
  */
 export function formatShell(template, ...args) {
     return template.replace(/\{(\d+)\}/g, (_, i) => args[i] ?? '');
@@ -31,7 +31,9 @@ export function getTempWorkingDir(working_directory) {
 }
 
 /**
- * Maps shell name to the file extension used for the temporary script file.
+ * Maps shell name to the file extension required for the temporary script file.
+ * Shells not listed here (e.g. `bash`, `sh`, `zsh`) do not require a specific
+ * extension, so they are omitted and the extension defaults to `''`.
  * @type {Object.<string, string>}
  */
 export const fileExtensions = { cmd: '.cmd', pwsh: '.ps1', powershell: '.ps1', python: '.py', python3: '.py' };
