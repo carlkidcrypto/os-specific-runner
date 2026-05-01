@@ -1,7 +1,7 @@
 # os-specific-runner
 
-All credit for the original work goes to [KnicKnic](https://github.com/KnicKnic). This is a detached-fork of <https://github.com/KnicKnic/os-specific-run>.
-This version (2.2.0 and beyond) will attempt to stay up to date on the latest version of NPM and other dependencies.
+All credit for the original work goes to [KnicKnic](https://github.com/KnicKnic). This is a fork of <https://github.com/KnicKnic/os-specific-run>.
+This version (2.2.0 and beyond) will attempt to stay up to date on the latest version of npm and other dependencies.
 
 ## Status Badge(s)
 
@@ -243,7 +243,7 @@ jobs:
 
 You can do what this project accomplishes with simple `if` statements in GitHub Actions.
 
-The problem is you have to figure them out, and they end up creating multiple steps — one per each OS — most of which are skipped at runtime. A single step (rather than multiple skipped steps) looks cleaner and makes it more obvious what failed. More details on `if` statements: <https://github.community/t/what-is-the-correct-if-condition-syntax-for-checking-matrix-os-version/16221/4>
+The problem is you have to figure them out, and they end up creating multiple steps — one per OS — most of which are skipped at runtime. A single step (rather than multiple skipped steps) looks cleaner and makes it more obvious what failed. More details on `if` statements: <https://github.community/t/what-is-the-correct-if-condition-syntax-for-checking-matrix-os-version/16221/4>
 
 ## Developer instructions
 

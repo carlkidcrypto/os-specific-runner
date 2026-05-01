@@ -94,7 +94,7 @@ Before submitting AI-assisted code, confirm that:
 * New shell templates added to ``builtInShells`` (cross-platform correctness matters)
 * Additions or renames of ``action.yml`` inputs (breaking change for existing users)
 * Changes to the temp-file path logic in ``getTempWorkingDir``
-* Anything that touches the ``dist/`` build artefact workflow (``regenerate.yml``)
+* Anything that touches the ``dist/`` build artifact workflow (``regenerate.yml``)
 * Large refactors or anything you are unsure about
 
 ----
