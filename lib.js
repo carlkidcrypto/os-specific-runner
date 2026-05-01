@@ -40,7 +40,7 @@ export const fileExtensions = { cmd: '.cmd', pwsh: '.ps1', powershell: '.ps1', p
 
 /**
  * Maps built-in shell names to their command templates.
- * The placeholder ``{0}`` is replaced with the path to the temporary script file.
+ * The placeholder `{0}` is replaced with the path to the temporary script file.
  * @type {Object.<string, string>}
  */
 export const builtInShells = {
