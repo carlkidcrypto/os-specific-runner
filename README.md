@@ -267,6 +267,11 @@ npm update
 ncc build index.js -m
 ```
 
+### Clean Lock File
+```pwsh
+rm -rf node_modules package-lock.json && npm install && npm test && npm run build
+```
+
 ### Run tests
 
 Unit tests run locally with:
