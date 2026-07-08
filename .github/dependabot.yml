@@ -3,6 +3,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     # Check for updates to GitHub Actions every weekday
+    open-pull-requests-limit: 10
     schedule:
       interval: "daily"
 
@@ -10,6 +11,7 @@ updates:
     ignore:
       - dependency-name: "github/gh-aw-actions" # Managed by gh aw compile. Version-locked to the gh-aw compiler; do not bump.
     directory: "/"
+    open-pull-requests-limit: 10
     schedule:
       # Check for updates to GitHub Actions every weekday
       interval: "daily"
