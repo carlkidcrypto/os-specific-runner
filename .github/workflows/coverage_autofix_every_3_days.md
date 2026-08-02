@@ -23,9 +23,9 @@ safe-outputs:
     allowed: [coverage, tests, javascript]
     max: 3
 timeout-minutes: 45
+model: claude-sonnet-5
 engine:
   id: copilot
-  model: auto
 network:
   allowed: [defaults]
 tools:

@@ -19,9 +19,9 @@ permissions:
 safe-outputs:
   update-release:
 timeout-minutes: 60
+model: claude-sonnet-5
 engine:
   id: copilot
-  model: auto
 network:
   allowed: [defaults, github]
 tools:
