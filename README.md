@@ -263,11 +263,14 @@ npm update
 
 ### Update project
 
+Rebuild the compiled `dist/index.js` bundle after changing `index.js` or `lib.js`:
+
 ```pwsh
-ncc build index.js -m
+npm run build
 ```
 
-### Clean Lock File
+### Clean lock file and reinstall dependencies
+
 ```pwsh
 rm -rf node_modules package-lock.json && npm install && npm test && npm run build
 ```
