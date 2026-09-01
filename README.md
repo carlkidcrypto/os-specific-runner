@@ -56,9 +56,9 @@ Each input accepts a shell command string. When omitted, a no-op `echo` is run s
 
 ### Shell override inputs (all optional)
 
-Override the shell used to execute a platform's command. Any value accepted by the GitHub Actions
-[`shell` field](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell)
-works here, including custom shell paths.
+Override the shell used to execute a platform's command. Use one of the built-in shell names listed
+below, or supply any other shell command string containing a `{0}` placeholder for the temporary
+script file path (e.g. `fish {0}`).
 
 | Input          | Default  | Available choices                                |
 |----------------|----------|--------------------------------------------------|
