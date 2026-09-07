@@ -75,8 +75,10 @@ The following built-in shells are available out of the box:
    * - ``python3``
      - ``python3 {0}``
 
-You may also pass any custom shell executable as the ``*Shell`` input value
-and it will be invoked directly with the script file path as the argument.
+You may also pass any custom shell command string as the ``*Shell`` input
+value. It is treated as a template just like the built-in shells above, so
+include a ``{0}`` placeholder where the temporary script file path should be
+substituted (e.g. ``fish {0}``).
 
 For general project information and the full list of action inputs, see the
 `GitHub repository <https://github.com/carlkidcrypto/os-specific-runner>`_.
