@@ -3,6 +3,7 @@ name: Auto Update Release Notes
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
+  job-discriminator: ${{ github.run_id }}
 on:
   release:
     types: [published]
@@ -52,7 +53,7 @@ When a new release is published, generate and update its release notes body on G
 1. Identify the release context:
    - Determine the tag name from the release being processed.
    - Determine whether the release is a prerelease from the GitHub release object (`prerelease: true|false`).
-   - The tag name is the version used in the GitHub Actions `uses:` reference (e.g., tag `v2.3.0` → `uses: carlkidcrypto/os-specific-runner@v2.3.0`).
+   - The tag name is the version used in the GitHub Actions `uses:` reference (e.g., tag `v2.3.0` → `uses: carlkidcrypto/os-specific-runner@v2.3.1
    - Determine a **base tag** using the following priority order (first match wins):
      1) If the release body contains an explicit override marker `<!-- BASE_TAG: <tag> -->`, use `<tag>` as base.
      2) If the current release is **stable** (`prerelease=false`), use the most recent earlier **stable** release tag by publish date.
@@ -113,7 +114,7 @@ Compared to: <base_tag_or_root_commit>
 ## Usage
 
 ```yaml
-- uses: carlkidcrypto/os-specific-runner@<tag>
+- uses: carlkidcrypto/os-specific-runner@v2.3.1
   with:
     linux:   echo "Hello from Linux"
     macos:   echo "Hello from macOS"
