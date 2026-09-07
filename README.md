@@ -79,7 +79,7 @@ works here, including custom shell paths.
 | `zsh`         | `zsh -e {0}`                                   |
 | `pwsh`        | `pwsh -command "& '{0}'"`                      |
 | `powershell`  | `powershell -command "& '{0}'"`                |
-| `cmd`         | `cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""` |
+| `cmd`         | `cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""`   |
 | `python`      | `python {0}`                                   |
 | `python3`     | `python3 {0}`                                  |
 
@@ -89,7 +89,7 @@ Any other value is passed through as a raw shell command string.
 
 | Input               | Required | Default | Description                                              |
 |---------------------|----------|---------|----------------------------------------------------------|
-| `working_directory` | No       | `""`    | Path from which to run the command. Empty = temp dir.    |
+| `working_directory` | No       | `""`    | Path where the generated temp script file is written. Does not change the working directory the command executes in — that remains the runner's default (e.g. `$GITHUB_WORKSPACE`). Empty = a scratch temp dir. |
 
 ## Practical Examples
 
@@ -160,17 +160,19 @@ Set any platform's shell to `python3` (Linux/macOS) or `python` (Windows) to exe
 
 ### Using a working directory
 
-Use `working_directory` to run commands from a specific path in your repository:
+The `working_directory` input controls where the action writes its generated
+temp script file; it does not change the directory your command runs from
+(that stays the runner's default, e.g. `$GITHUB_WORKSPACE`). To run a command
+from a specific path in your repository, `cd` into it yourself:
 
 ```yaml
     - uses: actions/checkout@v4
 
     - uses: carlkidcrypto/os-specific-runner@v2.3.1
       with:
-        working_directory: ./scripts
-        linux: bash build.sh
-        macos: bash build.sh
-        windows: pwsh build.ps1
+        linux: cd ./scripts && bash build.sh
+        macos: cd ./scripts && bash build.sh
+        windows: Set-Location ./scripts; pwsh build.ps1
 ```
 
 ### All platforms
@@ -219,24 +221,25 @@ jobs:
       - name: Install dependencies
         uses: carlkidcrypto/os-specific-runner@v2.3.1
         with:
-          working_directory: ./app
           linux: |
+            cd ./app
             npm ci
             echo "Linux deps installed"
           macos: |
+            cd ./app
             npm ci
             echo "macOS deps installed"
           windows: |
+            Set-Location ./app
             npm ci
             Write-Host "Windows deps installed"
 
       - name: Build
         uses: carlkidcrypto/os-specific-runner@v2.3.1
         with:
-          working_directory: ./app
-          linux:   npm run build
-          macos:   npm run build
-          windows: npm run build
+          linux:   cd ./app && npm run build
+          macos:   cd ./app && npm run build
+          windows: Set-Location ./app; npm run build
 ```
 
 ## Alternatives
