@@ -246,7 +246,7 @@ jobs:
 
 You can do what this project accomplishes with simple `if` statements in GitHub Actions.
 
-The problem is you have to figure them out, and they end up creating multiple steps — one per OS — most of which are skipped at runtime. A single step (rather than multiple skipped steps) looks cleaner and makes it more obvious what failed. More details on `if` statements: <https://github.community/t/what-is-the-correct-if-condition-syntax-for-checking-matrix-os-version/16221/4>
+The problem is you have to figure them out, and they end up creating multiple steps — one per OS — most of which are skipped at runtime. A single step (rather than multiple skipped steps) looks cleaner and makes it more obvious what failed. More details on `if` conditionals: <https://docs.github.com/en/actions/using-jobs/using-conditions-to-control-job-execution>
 
 ## Developer instructions
 
@@ -254,7 +254,7 @@ The problem is you have to figure them out, and they end up creating multiple st
 
 ```pwsh
 npm install -g npm@11.17.0
-npm install -g @vercel/ncc@0.44.0
+npm install -g @vercel/ncc@0.45.0
 npm install
 ```
 
