@@ -27,7 +27,7 @@ model: gpt-6.1-sol
 engine:
   id: copilot
 network:
-  allowed: [defaults]
+  allowed: [defaults, node]
 tools:
   edit:
   bash: true
