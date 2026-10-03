@@ -21,7 +21,7 @@ safe-outputs:
     if-no-changes: "ignore"
     base-branch: main
 timeout-minutes: 30
-model: claude-sonnet-5
+model: gpt-6.1-sol
 engine:
   id: copilot
 network:
