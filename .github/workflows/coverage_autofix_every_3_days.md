@@ -23,7 +23,7 @@ safe-outputs:
     allowed: [coverage, tests, javascript]
     max: 3
 timeout-minutes: 45
-model: claude-sonnet-5
+model: gpt-6.1-sol
 engine:
   id: copilot
 network:
