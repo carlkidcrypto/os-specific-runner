@@ -7,11 +7,16 @@ on:
   release:
     types: [ published ]
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Build versioned docs for specific tag (e.g. v2.4.0). If empty, builds latest docs for GitHub Pages.'
+        required: false
+        default: ''
 
 jobs:
   # ── Build latest docs on push to main ─────────────────────────────────────
   sphinx_docs_build:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.release_tag == '')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -76,7 +81,7 @@ jobs:
           path: docs/
 
   deploy_pages:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.release_tag == '')
     needs: sphinx_docs_build
     runs-on: ubuntu-latest
     permissions:
@@ -91,17 +96,18 @@ jobs:
 
   # ── Build versioned docs on release and commit back to main ───────────────
   sphinx_docs_build_release:
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release_tag != '')
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Check out repository code at release tag
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
           fetch-tags: true
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || inputs.release_tag }}
 
       - name: Set up Python 3.12 env for sphinx...
         uses: actions/setup-python@v7
@@ -138,7 +144,7 @@ jobs:
 
       - name: Build versioned docs
         run: |
-          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${{ github.event.release.tag_name || inputs.release_tag }}"
           cd ${{ github.workspace }}/sphinx_docs_build
           mkdir -p source/_static source/_templates
           sphinx-build -b html -W source/ "/tmp/html_${VERSION}/"
@@ -151,7 +157,7 @@ jobs:
 
       - name: Copy versioned docs into docs/
         run: |
-          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${{ github.event.release.tag_name || inputs.release_tag }}"
           cp -r "/tmp/html_${VERSION}/" "${{ github.workspace }}/docs/html_${VERSION}/"
 
       - name: Update landing page version list
@@ -194,14 +200,38 @@ jobs:
           mkdir -p source/_templates
           make html
 
-      - name: Commit and push versioned docs
+      - name: Create Pull Request with versioned docs
+        id: create-pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "docs: add versioned documentation for ${{ github.event.release.tag_name || inputs.release_tag }}"
+          title: "📚 Add versioned docs for ${{ github.event.release.tag_name || inputs.release_tag }}"
+          body: |
+            This PR adds the versioned Sphinx documentation for release `${{ github.event.release.tag_name || inputs.release_tag }}`.
+            - Built from release tag: `${{ github.event.release.tag_name || inputs.release_tag }}`
+            - Run ID: ${{ github.run_id }}
+          branch: docs/add-versioned-docs-${{ github.event.release.tag_name || inputs.release_tag }}
+          base: main
+          delete-branch: true
+          labels: documentation, automated-pr
+          add-paths: |
+            docs/html_${{ github.event.release.tag_name || inputs.release_tag }}/
+            sphinx_docs_build/landing/source/index.rst
+            docs/index.html
+            docs/.buildinfo
+            docs/_static
+            docs/_sources
+            docs/genindex.html
+            docs/search.html
+            docs/searchindex.js
+            docs/objects.inv
+
+      - name: Enable Auto-merge
+        if: steps.create-pr.outputs.pull-request-number != ''
         run: |
-          VERSION="${{ github.event.release.tag_name }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "docs/html_${VERSION}/"
-          git add sphinx_docs_build/landing/source/index.rst
-          git add docs/index.html docs/.buildinfo docs/_static docs/_sources docs/genindex.html docs/search.html docs/searchindex.js docs/objects.inv
-          git diff --cached --quiet && echo "Nothing to commit" || \
-            git commit -m "docs: add versioned documentation for ${VERSION}"
-          git push origin main
+          PR_NUMBER="${{ steps.create-pr.outputs.pull-request-number }}"
+          echo "Attempting to auto-merge PR #$PR_NUMBER"
+          gh pr merge --auto --merge "$PR_NUMBER" || echo "Auto-merge could not be enabled; PR created for manual merge."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
