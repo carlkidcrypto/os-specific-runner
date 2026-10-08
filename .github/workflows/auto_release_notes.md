@@ -20,7 +20,7 @@ permissions:
 safe-outputs:
   update-release:
 timeout-minutes: 60
-model: gpt-6.1-sol
+model: sonnet
 engine:
   id: copilot
 network:
