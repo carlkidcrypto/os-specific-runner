@@ -172,8 +172,8 @@ configured in ``action.yml`` via ``runs.using: "node24"``.
 as an immutable generated artifact; direct manual edits to ``dist/index.js`` are prohibited.
 
 [BUILD-04] The version of ``@vercel/ncc`` documented in contributor instructions and used in CI
-workflows shall remain synchronized with the ``@vercel/ncc`` version declared in ``package.json``
-devDependencies.
+workflows (such as ``regenerate.yml``) shall remain synchronized with the ``@vercel/ncc`` version
+declared in ``package.json`` dependencies.
 
 Testing and Code Coverage
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,7 +201,7 @@ running against live GitHub Actions virtual environments on Ubuntu, macOS, and W
 * Failure exit code propagation for both POSIX shells and Windows shells (``pwsh``, ``powershell``,
   and ``cmd``), confirming that steps fail with non-zero exit codes when commands fail.
 
-[TEST-06] CI workflows shall generate test coverage reports in text, lcov, and clover formats and
+[TEST-06] CI workflows shall generate test coverage reports in text and lcov formats and
 upload them to Codecov for visibility.
 
 Code Quality and Security
@@ -213,8 +213,9 @@ JavaScript source code and GitHub Actions workflow files.
 [QUAL-02] The repository shall maintain Dependabot configuration (``.github/dependabot.yml``)
 scheduled weekly to monitor and propose updates for npm dependencies and GitHub Actions.
 
-[QUAL-03] All third-party GitHub Actions referenced in repository workflows shall be pinned to
-immutable full commit SHAs with inline version tag comments.
+[QUAL-03] Third-party GitHub Actions referenced in repository workflows shall specify explicit
+version tags (or immutable commit SHAs for compiled agentic workflows) to ensure build
+reproducibility.
 
 [QUAL-04] All exported functions, objects, and types in ``lib.js`` and ``index.js`` shall maintain
 complete and accurate JSDoc documentation comments.
@@ -245,8 +246,10 @@ traceable software requirements shall be maintained in
 CI/CD and Maintenance Automation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-[CICD-01] Continuous integration workflows shall execute unit tests and integration tests on every
-push to ``main`` and on every pull request across Ubuntu, macOS, and Windows runners.
+[CICD-01] Continuous integration workflows shall execute unit tests and integration tests across
+Ubuntu, macOS, and Windows runners for pushes to ``main`` and pull requests that modify action
+source code, dependencies, test suites, or workflow definitions (using path filters to conserve
+runner resources on documentation-only changes).
 
 [CICD-02] All GitHub Actions CI/CD workflows shall enforce concurrency groups scoped to the workflow
 name (``group: ${{ github.workflow }}``) with ``cancel-in-progress: true`` to eliminate redundant
