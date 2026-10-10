@@ -45,11 +45,11 @@ export const fileExtensions = { cmd: '.cmd', pwsh: '.ps1', powershell: '.ps1', p
  */
 export const builtInShells = {
     bash: 'bash --noprofile --norc -eo pipefail {0}',
-    pwsh: 'pwsh -command "& \'{0}\'"',
+    pwsh: 'pwsh -command "& \'{0}\'; if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }"',
     python: 'python {0}',
     python3: 'python3 {0}',
     sh: 'sh -e {0}',
     cmd: 'cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""',
-    powershell: 'powershell -command "& \'{0}\'"',
+    powershell: 'powershell -command "& \'{0}\'; if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }"',
     zsh: 'zsh -e {0}',
 };
