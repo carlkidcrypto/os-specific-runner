@@ -79,8 +79,9 @@ jobs:
           linuxShell: bash {0}
           macos: echo "Custom shell template on macos"
           macosShell: bash {0}
-          windows: echo "Custom shell template on windows"
-          windowsShell: 'cmd.exe /D /E:ON /V:OFF /S /C "CALL \"{0}\""'
+          windows: |
+            print("Custom shell template on windows")
+          windowsShell: python -u {0}
 
       - name: Running test for Windows non-zero exit code detection (pwsh)...
         id: test_pwsh_failure
