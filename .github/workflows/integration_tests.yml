@@ -72,6 +72,17 @@ jobs:
           macos: echo "test2"
           macosShell: zsh
 
+      - name: Running custom shell template test...
+        uses: ./
+        with:
+          linux: echo "Custom shell template on linux"
+          linuxShell: bash {0}
+          macos: echo "Custom shell template on macos"
+          macosShell: bash {0}
+          windows: |
+            print("Custom shell template on windows")
+          windowsShell: python -u {0}
+
       - name: Running test for Windows non-zero exit code detection (pwsh)...
         id: test_pwsh_failure
         continue-on-error: true

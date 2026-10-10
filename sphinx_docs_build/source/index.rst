@@ -90,6 +90,12 @@ For general project information and the full list of action inputs, see the
    index_js
    lib_js
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Specifications:
+
+   software_requirements
+
 Indices and tables
 ==================
 
