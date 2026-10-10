@@ -254,7 +254,7 @@ The problem is you have to figure them out, and they end up creating multiple st
 
 ```pwsh
 npm install -g npm@11.17.0
-npm install -g @vercel/ncc@0.44.0
+npm install -g @vercel/ncc@0.45.0
 npm install
 ```
 
