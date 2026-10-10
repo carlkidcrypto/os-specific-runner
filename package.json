@@ -1,6 +1,6 @@
 {
   "name": "os-specific-runner",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "GitHub Action that runs a different shell command per OS (Linux, macOS, Windows, AIX, FreeBSD, OpenBSD, SunOS) with configurable shells including bash, zsh, sh, pwsh, cmd, and python",
   "main": "index.js",
   "scripts": {
@@ -50,10 +50,10 @@
     "@vercel/ncc": "^0.45.0"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.1",
-    "@babel/preset-env": "^8.0.1",
-    "babel-jest": "^30.5.0",
-    "jest": "^30.5.0"
+    "@babel/core": "^8.0.6",
+    "@babel/preset-env": "^8.0.6",
+    "babel-jest": "^30.5.2",
+    "jest": "^30.5.2"
   },
   "jest": {
     "transform": {
@@ -65,5 +65,10 @@
       "text",
       "lcov"
     ]
+  },
+  "overrides": {
+    "@istanbuljs/load-nyc-config": {
+      "js-yaml": "^4.1.0"
+    }
   }
 }

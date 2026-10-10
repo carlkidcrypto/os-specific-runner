@@ -21,7 +21,7 @@ safe-outputs:
     if-no-changes: "ignore"
     base-branch: main
 timeout-minutes: 30
-model: claude-sonnet-5
+model: sonnet
 engine:
   id: copilot
 network:

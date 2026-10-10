@@ -23,11 +23,11 @@ safe-outputs:
     allowed: [coverage, tests, javascript]
     max: 3
 timeout-minutes: 45
-model: claude-sonnet-5
+model: sonnet
 engine:
   id: copilot
 network:
-  allowed: [defaults]
+  allowed: [defaults, node]
 tools:
   edit:
   bash: true
