@@ -77,8 +77,8 @@ script file path (e.g. `fish {0}`).
 | `bash`        | `bash --noprofile --norc -eo pipefail {0}`     |
 | `sh`          | `sh -e {0}`                                    |
 | `zsh`         | `zsh -e {0}`                                   |
-| `pwsh`        | `pwsh -command "& '{0}'"`                      |
-| `powershell`  | `powershell -command "& '{0}'"`                |
+| `pwsh`        | `pwsh -command "& '{0}'; if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }"` |
+| `powershell`  | `powershell -command "& '{0}'; if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }"` |
 | `cmd`         | `cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""`   |
 | `python`      | `python {0}`                                   |
 | `python3`     | `python3 {0}`                                  |

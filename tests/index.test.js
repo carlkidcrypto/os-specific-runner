@@ -75,7 +75,12 @@ describe('builtInShells', () => {
 
     test('pwsh template formats correctly', () => {
         expect(formatShell(builtInShells['pwsh'], 'C:\\script.ps1'))
-            .toBe("pwsh -command \"& 'C:\\script.ps1'\"");
+            .toBe("pwsh -command \"& 'C:\\script.ps1'; if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }\"");
+    });
+
+    test('powershell template formats correctly', () => {
+        expect(formatShell(builtInShells['powershell'], 'C:\\script.ps1'))
+            .toBe("powershell -command \"& 'C:\\script.ps1'; if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }\"");
     });
 
     test('cmd template formats correctly', () => {

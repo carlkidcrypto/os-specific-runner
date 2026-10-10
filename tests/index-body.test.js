@@ -104,6 +104,76 @@ describe('index.js body()', () => {
         expect(setFailed).toHaveBeenCalledWith('boom');
     });
 
+    test('runs successfully on windows with pwsh shell and propagates LASTEXITCODE check', async () => {
+        mockPlatform.mockReturnValue('win32');
+        getInput.mockImplementation((name) => {
+            if (name === 'windows') return 'Write-Host hello';
+            if (name === 'windowsShell') return 'pwsh';
+            return '';
+        });
+        exec.mockResolvedValue(0);
+
+        await loadAndRunBody();
+
+        expect(mockWriteFileSync).toHaveBeenCalledWith(
+            expect.stringMatching(/\.ps1$/),
+            'Write-Host hello'
+        );
+        expect(exec).toHaveBeenCalledWith(
+            expect.stringMatching(/^pwsh -command "& '.*\.ps1'; if \(\(Test-Path -LiteralPath variable:\\LASTEXITCODE\)\) { exit \$LASTEXITCODE }"$/)
+        );
+        expect(setFailed).not.toHaveBeenCalled();
+    });
+
+    test('runs successfully on windows with powershell shell and propagates LASTEXITCODE check', async () => {
+        mockPlatform.mockReturnValue('win32');
+        getInput.mockImplementation((name) => {
+            if (name === 'windows') return 'Write-Host hello';
+            if (name === 'windowsShell') return 'powershell';
+            return '';
+        });
+        exec.mockResolvedValue(0);
+
+        await loadAndRunBody();
+
+        expect(mockWriteFileSync).toHaveBeenCalledWith(
+            expect.stringMatching(/\.ps1$/),
+            'Write-Host hello'
+        );
+        expect(exec).toHaveBeenCalledWith(
+            expect.stringMatching(/^powershell -command "& '.*\.ps1'; if \(\(Test-Path -LiteralPath variable:\\LASTEXITCODE\)\) { exit \$LASTEXITCODE }"$/)
+        );
+        expect(setFailed).not.toHaveBeenCalled();
+    });
+
+    test('calls setFailed when windows command fails with non-zero exit code in pwsh', async () => {
+        mockPlatform.mockReturnValue('win32');
+        getInput.mockImplementation((name) => {
+            if (name === 'windows') return 'cmd.exe /c exit 1';
+            if (name === 'windowsShell') return 'pwsh';
+            return '';
+        });
+        exec.mockResolvedValue(1);
+
+        await loadAndRunBody();
+
+        expect(setFailed).toHaveBeenCalledWith('Failed with error code 1');
+    });
+
+    test('calls setFailed when windows command fails with non-zero exit code in powershell', async () => {
+        mockPlatform.mockReturnValue('win32');
+        getInput.mockImplementation((name) => {
+            if (name === 'windows') return 'cmd.exe /c exit 42';
+            if (name === 'windowsShell') return 'powershell';
+            return '';
+        });
+        exec.mockResolvedValue(42);
+
+        await loadAndRunBody();
+
+        expect(setFailed).toHaveBeenCalledWith('Failed with error code 42');
+    });
+
     test('resolves custom shell name not in builtInShells map', async () => {
         mockPlatform.mockReturnValue('freebsd');
         getInput.mockImplementation((name) => {

@@ -65,9 +65,9 @@ The following built-in shells are available out of the box:
    * - ``zsh``
      - ``zsh -e {0}``
    * - ``pwsh``
-     - ``pwsh -command "& '{0}'"``
+     - ``pwsh -command "& '{0}'; if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }"``
    * - ``powershell``
-     - ``powershell -command "& '{0}'"``
+     - ``powershell -command "& '{0}'; if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }"``
    * - ``cmd``
      - ``cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""``
    * - ``python``

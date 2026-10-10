@@ -71,3 +71,35 @@ jobs:
           working_directory: my_new_dir_1/dir_1/dir1/here_1
           macos: echo "test2"
           macosShell: zsh
+
+      - name: Running test for Windows non-zero exit code detection (pwsh)...
+        id: test_pwsh_failure
+        continue-on-error: true
+        uses: ./
+        with:
+          windows: cmd.exe /c "exit 1"
+          windowsShell: pwsh
+
+      - name: Verify pwsh failure was detected
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          if ("${{ steps.test_pwsh_failure.outcome }}" -ne "failure") {
+            throw "Expected action to fail on Windows with pwsh when command exits non-zero, but outcome was ${{ steps.test_pwsh_failure.outcome }}"
+          }
+
+      - name: Running test for Windows non-zero exit code detection (powershell)...
+        id: test_powershell_failure
+        continue-on-error: true
+        uses: ./
+        with:
+          windows: cmd.exe /c "exit 42"
+          windowsShell: powershell
+
+      - name: Verify powershell failure was detected
+        if: matrix.os == 'windows-latest'
+        shell: powershell
+        run: |
+          if ("${{ steps.test_powershell_failure.outcome }}" -ne "failure") {
+            throw "Expected action to fail on Windows with powershell when command exits non-zero, but outcome was ${{ steps.test_powershell_failure.outcome }}"
+          }
