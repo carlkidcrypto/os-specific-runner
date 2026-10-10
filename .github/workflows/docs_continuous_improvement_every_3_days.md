@@ -21,6 +21,8 @@ timeout-minutes: 45
 model: sonnet
 engine:
   id: copilot
+network:
+  allowed: [defaults, github, node, "github.community"]
 ---
 
 # Documentation Continuous Improvement
