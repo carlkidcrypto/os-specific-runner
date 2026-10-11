@@ -10,5 +10,6 @@ templates_path = ["_templates"]
 exclude_patterns = []
 
 html_theme = "furo"
+html_baseurl = "https://carlkidcrypto.github.io/os-specific-runner/"
 html_static_path = ["_static"]
 html_title = "os-specific-runner Documentation"

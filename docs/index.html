@@ -3,7 +3,18 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="GitHub Action that runs OS-specific commands and scripts across Linux, macOS, Windows, FreeBSD, OpenBSD, AIX, and SunOS runners in unified workflows." name="description" />
+<meta content="os-specific-runner, github action, cross platform runner, multi os github action, conditional step github actions, linux macos windows runner, github actions matrix, carlkidcrypto" name="keywords" />
+<meta content="Carlos (&#64;carlkidcrypto)" name="author" />
+<meta content="os-specific-runner — Multi-Platform GitHub Action" property="og:title" />
+<meta content="Run platform-specific shell commands seamlessly across Linux, macOS, Windows, and BSD runners within unified GitHub Actions workflows." property="og:description" />
+<meta content="website" property="og:type" />
+<meta content="https://carlkidcrypto.github.io/os-specific-runner/" property="og:url" />
+<meta content="summary" name="twitter:card" />
+<meta content="os-specific-runner" name="twitter:title" />
+<meta content="Run OS-specific shell commands across Linux, macOS, and Windows runners in GitHub Actions." name="twitter:description" />
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+        <link rel="canonical" href="https://carlkidcrypto.github.io/os-specific-runner/index.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
         <title>os-specific-runner Documentation</title>
@@ -34,7 +45,40 @@
       }
     }
   }
-</style></head>
+</style>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://carlkidcrypto.github.io/os-specific-runner/#software",
+        "name": "os-specific-runner",
+        "alternateName": ["OS Specific Runner", "os-specific-run"],
+        "description": "GitHub Action that runs different shell commands depending on runner OS across Linux, macOS, Windows, FreeBSD, OpenBSD, AIX, and SunOS.",
+        "url": "https://carlkidcrypto.github.io/os-specific-runner/",
+        "codeRepository": "https://github.com/carlkidcrypto/os-specific-runner",
+        "programmingLanguage": "JavaScript",
+        "operatingSystem": ["Linux", "macOS", "Windows", "FreeBSD", "OpenBSD", "AIX", "SunOS"],
+        "author": {
+          "@type": "Person",
+          "name": "Carlos",
+          "alternateName": "carlkidcrypto",
+          "url": "https://carlkidcrypto.github.io/"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://carlkidcrypto.github.io/os-specific-runner/#website",
+        "url": "https://carlkidcrypto.github.io/os-specific-runner/",
+        "name": "os-specific-runner Documentation",
+        "description": "Official documentation and guide for os-specific-runner GitHub Action."
+      }
+    ]
+  }
+  </script>
+</head>
   <body>
     
     <script>
@@ -172,7 +216,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -222,21 +266,42 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="os-specific-runner-documentation">
 <h1>os-specific-runner Documentation<a class="headerlink" href="#os-specific-runner-documentation" title="Link to this heading">¶</a></h1>
+<p>The <strong>os-specific-runner</strong> GitHub Action enables you to execute OS-specific shell commands
+and scripts directly within a single, unified step on GitHub Actions matrix builds or multi-platform
+runners—without needing tedious <code class="docutils literal notranslate"><span class="pre">if:</span> <span class="pre">runner.os</span> <span class="pre">==</span> <span class="pre">'...'</span></code> boilerplate conditions.</p>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Multi-Platform Coverage:</strong> Automatically detects the host platform via Node.js <code class="docutils literal notranslate"><span class="pre">os.platform()</span></code>, supporting Linux, macOS, Windows, FreeBSD, OpenBSD, AIX, and SunOS.</p></li>
+<li><p><strong>Smart Defaults:</strong> Employs appropriate default shells for each platform (<code class="docutils literal notranslate"><span class="pre">bash</span></code> on Linux, <code class="docutils literal notranslate"><span class="pre">zsh</span></code> on macOS, <code class="docutils literal notranslate"><span class="pre">pwsh</span></code> on Windows, and <code class="docutils literal notranslate"><span class="pre">sh</span></code> on Unix/BSD).</p></li>
+<li><p><strong>Custom Shell Overrides:</strong> Override the default shell on any platform with custom binaries or command templates using <code class="docutils literal notranslate"><span class="pre">{0}</span></code> placeholders.</p></li>
+<li><p><strong>Safe Fallbacks:</strong> Unconfigured operating system inputs safely log informative notices without breaking the workflow step.</p></li>
+</ul>
+</section>
+<section id="select-a-version">
+<h2>Select a Version<a class="headerlink" href="#select-a-version" title="Link to this heading">¶</a></h2>
 <p>Select a version of the documentation to browse:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="./html/index.html">Latest Alpha/Beta Version</a></p></li>
 <li><p><a class="reference external" href="./html_v2.4.0/index.html">v2.4.0</a></p></li>
 <li><p><a class="reference external" href="./html_v2.2.0/index.html">v2.2.0</a></p></li>
 </ul>
-<p>For general project information, see the
-<a class="reference external" href="https://github.com/carlkidcrypto/os-specific-runner">GitHub repository</a>.</p>
+</section>
+<section id="project-links">
+<h2>Project Links<a class="headerlink" href="#project-links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Source Code:</strong> <a class="reference external" href="https://github.com/carlkidcrypto/os-specific-runner">GitHub Repository</a></p></li>
+<li><p><strong>Releases:</strong> <a class="reference external" href="https://github.com/carlkidcrypto/os-specific-runner/releases">GitHub Releases</a></p></li>
+<li><p><strong>Maintainer:</strong> <a class="reference external" href="https://carlkidcrypto.github.io/">Carlos (&#64;carlkidcrypto)</a></p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -264,8 +329,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">os-specific-runner Documentation</a><ul>
+<li><a class="reference internal" href="#key-features">Key Features</a></li>
+<li><a class="reference internal" href="#select-a-version">Select a Version</a></li>
+<li><a class="reference internal" href="#project-links">Project Links</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
