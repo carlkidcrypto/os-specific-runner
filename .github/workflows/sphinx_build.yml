@@ -147,7 +147,7 @@ jobs:
           VERSION="${{ github.event.release.tag_name || inputs.release_tag }}"
           cd ${{ github.workspace }}/sphinx_docs_build
           mkdir -p source/_static source/_templates
-          sphinx-build -b html -W source/ "/tmp/html_${VERSION}/"
+          sphinx-build -b html -W -D release="${VERSION}" source/ "/tmp/html_${VERSION}/"
 
       - name: Switch to main branch
         run: |
