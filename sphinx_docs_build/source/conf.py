@@ -20,16 +20,8 @@ project = "os-specific-runner"
 copyright = "2024-%Y, carlkidcrypto"
 author = "carlkidcrypto"
 
-import json
-from pathlib import Path
-
-# The full version, dynamically loaded from package.json
-try:
-    _pkg_json = Path(__file__).resolve().parents[2] / "package.json"
-    with open(_pkg_json, "r", encoding="utf-8") as _f:
-        release = f"v{json.load(_f)['version']}"
-except Exception:
-    release = "v2.4.0"
+# The full version, including alpha/beta/rc tags
+release = "v2.4.0"
 
 
 # -- General configuration ---------------------------------------------------
