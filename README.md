@@ -193,16 +193,16 @@ A snippet that covers every platform supported by `os.platform()`, useful when t
 
 ## Full Example
 
-A realistic workflow that installs Node.js, checks out code, and runs OS-specific build steps from a dedicated directory:
+A realistic workflow that installs Node.js, checks out code, and runs OS-specific build steps from a subdirectory:
 
 ```yaml
 name: Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
