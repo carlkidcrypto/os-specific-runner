@@ -89,7 +89,7 @@ Any other value is passed through as a raw shell command string.
 
 | Input               | Required | Default | Description                                              |
 |---------------------|----------|---------|----------------------------------------------------------|
-| `working_directory` | No       | `""`    | Path where the generated temp script file is written. Does not change the working directory the command executes in — that remains the runner's default (e.g. `$GITHUB_WORKSPACE`). Empty = a scratch temp dir. |
+| `working_directory` | No       | `""`    | Subdirectory name, resolved relative to the OS temp directory (`os.tmpdir()`), where the generated temp script file is written. Does not change the working directory the command executes in — that remains the runner's default (e.g. `$GITHUB_WORKSPACE`). Empty = a scratch temp dir. |
 
 ## Practical Examples
 
@@ -161,7 +161,7 @@ Set any platform's shell to `python3` (Linux/macOS) or `python` (Windows) to exe
 ### Using a working directory
 
 The `working_directory` input controls where the action writes its generated
-temp script file; it does not change the directory your command runs from
+temp script file (a subdirectory of the OS temp directory, not of your repository); it does not change the directory your command runs from
 (that stays the runner's default, e.g. `$GITHUB_WORKSPACE`). To run a command
 from a specific path in your repository, `cd` into it yourself:
 

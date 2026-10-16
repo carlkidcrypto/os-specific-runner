@@ -73,7 +73,7 @@ inputs:
     default: "pwsh"
 
   working_directory:
-    description: "Directory path where the generated temp script file is written. Does not change the command's execution directory. Leave empty to use a temporary scratch directory."
+    description: "Subdirectory name (relative to the OS temp directory) where the generated temp script file is written. Does not change the command's execution directory. Leave empty to use a temporary scratch directory."
     required: false
     default: ""
 
