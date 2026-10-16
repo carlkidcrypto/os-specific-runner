@@ -18,6 +18,8 @@ permissions:
   contents: read
   copilot-requests: write
 safe-outputs:
+  noop:
+    report-as-issue: true
   update-release:
 timeout-minutes: 60
 model: sonnet

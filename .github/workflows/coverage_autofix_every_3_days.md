@@ -11,6 +11,8 @@ permissions:
   contents: read
   copilot-requests: write
 safe-outputs:
+  noop:
+    report-as-issue: true
   create-pull-request:
     title-prefix: "[coverage-autofix] "
     labels: [automated-pr]
@@ -31,6 +33,8 @@ network:
 tools:
   edit:
   bash: true
+imports:
+  - shared/codecov-coverage.md
 ---
 
 # Coverage Checks And Suggested Fixes
@@ -47,6 +51,12 @@ Run an end-to-end coverage health check for JavaScript unit tests, then propose 
 - If no meaningful change is needed, make no file edits and end cleanly.
 
 ## Coverage Check Procedure
+
+**Start with Codecov.** Before running anything, read the pre-fetched Codecov data in
+`/tmp/gh-aw/agent/codecov/summary.md` (see "Codecov Coverage Data" below; dashboard:
+https://app.codecov.io/gh/carlkidcrypto/os-specific-runner). Use its missed/partial line numbers for `index.js` and `lib.js`
+as the primary list of gaps, and use the local coverage run below to confirm and refine them.
+If local tests cannot be run, author tests statically for the Codecov-reported gaps and let CI verify them.
 
 1. Install dependencies and run JavaScript tests with coverage:
    - `npm install`
