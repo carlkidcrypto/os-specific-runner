@@ -4,3 +4,7 @@ docs/doctrees/
 docs/html/
 docs/html_v*/.doctrees/
 sphinx_docs_build/landing/.doctrees/
+
+# Dynamically extracted gh-aw inline skills
+/.github/skills/*
+!/.github/skills/agentic-workflows/
