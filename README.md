@@ -62,13 +62,13 @@ script file path (e.g. `fish {0}`).
 
 | Input          | Default  | Available choices                                |
 |----------------|----------|--------------------------------------------------|
-| `linuxShell`   | `bash`   | `bash`, `sh`, `python`, `python3`, or any path   |
-| `macosShell`   | `zsh`    | `zsh`, `bash`, `python`, `python3`, or any path  |
+| `linuxShell`   | `bash`   | `bash`, `sh`, `python`, `python3`, or a custom `{0}` template |
+| `macosShell`   | `zsh`    | `zsh`, `bash`, `python`, `python3`, or a custom `{0}` template |
 | `windowsShell` | `pwsh`   | `pwsh`, `powershell`, `cmd`, `python`, `python3` |
-| `aixShell`     | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
-| `freebsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
-| `openbsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
-| `sunosShell`   | `sh`     | `sh`, `bash`, `python`, `python3`, or any path   |
+| `aixShell`     | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
+| `freebsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
+| `openbsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
+| `sunosShell`   | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
 
 **Built-in shell templates** (expanded automatically when you use one of these names):
 
