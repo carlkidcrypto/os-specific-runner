@@ -1,11 +1,18 @@
 ---
 name: Update Changelog
 concurrency:
-  group: ${{ github.workflow }}
+  group: "${{ github.repository }}-${{ github.workflow }}"
   cancel-in-progress: false
+  job-discriminator: ${{ github.run_id }}
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Optional release tag to document
+        required: false
+        type: string
   skip-if-match:
     query: 'is:pr is:open head:automation/update-changelog label:documentation label:automated-pr'
 permissions:
@@ -22,7 +29,9 @@ safe-outputs:
     preserve-branch-name: true
     if-no-changes: "ignore"
     base-branch: main
-timeout-minutes: 30
+    protected-files: allowed
+timeout-minutes: 15
+max-ai-credits: 25
 model: sonnet
 engine:
   id: copilot
@@ -51,14 +60,20 @@ Generate and open a changelog update PR only when substantive changelog content 
    - Ensure full git history and tags are available.
    - Use local repository history for all commit analysis steps.
    - Do not call GitHub commit-reading APIs/tools (for example `list_commits`, `get_commit`) for changelog intelligence.
-   - If `git-chglog` is missing, install it with:
-     - `go install github.com/git-chglog/git-chglog/cmd/git-chglog@latest`
+   - If `git-chglog` is missing, install it using the pre-built binary (fast — no compilation):
+     ```bash
+     curl -sSfL https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_linux_amd64.tar.gz \
+       | tar xz -C /usr/local/bin git-chglog
+     ```
+   - If the curl download fails, fall back to: `go install github.com/git-chglog/git-chglog/cmd/git-chglog@latest`
+   - After installation, verify it works: `git-chglog --version`
+   - **If git-chglog cannot be installed by either method, stop immediately with a clear error message. Do NOT attempt to re-implement changelog generation using Python, shell, or any other scripting language.**
 
 2. Generate candidate changelog content:
    - `git-chglog --config .chglog/config.yml -o CHANGELOG.tmp`
 
 3. Build commit intelligence context for summary quality:
-   - Identify the current release tag from the triggering release.
+   - Identify the current release tag from the triggering release. For `workflow_dispatch`, use the supplied `tag` input, or fallback to the latest tag or HEAD.
    - Determine whether the triggering release is a prerelease (`prerelease: true|false`) from the GitHub release payload.
    - Select a comparison base using this priority order (first match wins):
      1) If the release body contains `<!-- BASE_TAG: <tag> -->`, use `<tag>`.
@@ -114,3 +129,5 @@ Include:
 - Never choose a prerelease base for a stable release if an earlier stable release exists.
 - Prefer meaningful, user-impacting summaries over dependency/CI churn when both are present.
 - Never fail the run solely because external commit APIs are blocked by integrity filtering; fall back to local git history and continue.
+- Never attempt to re-implement `git-chglog` in Python, shell, or any other language. If the tool cannot be installed, stop with a clear error.
+- **Bounded file reads (Token Optimization)**: Avoid dumping the entire `CHANGELOG.md` file into context. Use `head`, `tail`, or `git diff` for comparisons.

@@ -1,0 +1,54 @@
+style: github
+template: CHANGELOG.tpl.md
+info:
+  title: CHANGELOG
+  repository_url: https://github.com/carlkidcrypto/os-specific-runner
+options:
+  commits:
+    # filters:
+    #   Type:
+    #     - feat
+    #     - fix
+    #     - perf
+    #     - refactor
+  commit_groups:
+    title_maps:
+      # Lowercase conventional commits
+      feat: Features
+      fix: Bug Fixes
+      perf: Performance Improvements
+      refactor: Code Refactoring
+      docs: Documentation Updates
+      chore: Maintenance
+      build: Build System
+      ci: Continuous Integration
+      test: Tests
+      style: Styles
+      revert: Reverts
+      # Capitalized word prefixes
+      Fix: Bug Fixes
+      Refactor: Code Refactoring
+      Bump: Dependency Updates
+      Add: Features
+      Update: Updates & Improvements
+      Document: Documentation Updates
+      Increase: Performance Improvements
+      Modernize: Code Improvements
+      Feature: Features
+      Hotfix: Critical Bug Fixes
+      Enhance: Enhancements
+      Use: Code Refactoring
+      Initial: Initial Setup
+      # Merge commits
+      Merge: Merged Pull Requests
+      # Fallback
+      other: Other Changes
+  header:
+    # Expanded pattern to better handle different prefixes and commit styles
+    pattern: "^\\s*(([\\w/-]+)(?:[:\\s/-].*)?)$"
+    pattern_maps:
+      - Subject
+      - Type
+  notes:
+    keywords:
+      - BREAKING CHANGE
