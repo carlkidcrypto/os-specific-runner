@@ -232,7 +232,7 @@ and ``lib.js`` using ``sphinx-js`` and ``jsdoc``.
 compiling Sphinx documentation with ``-W`` (treating all warnings as fatal errors).
 
 [DOCS-04] The documentation system shall maintain versioned documentation archives for each
-published release tag (e.g. ``docs/html_v2.5.0/``), served alongside latest development
+published release tag (e.g. ``docs/html_v2026.11.3-0/``), served alongside latest development
 documentation via GitHub Pages.
 
 [DOCS-05] The documentation system shall maintain an automated version-selector landing page
@@ -271,3 +271,8 @@ Workflows (``gh-aw``), compiled with ``gh aw compile --actionlint``:
 
 [CICD-04] Documentation publication upon release shall be automated via Pull Request creation
 (``peter-evans/create-pull-request``) targeting the ``main`` branch with automated merge capability.
+
+[CICD-05] The package versioning and release automation shall follow SemVer-compliant
+Calendar Versioning (CalSemVer) using ``YYYY.M.D`` for stable releases and ``YYYY.M.D-N`` for
+pre-releases, omitting leading zeroes in date components to guarantee compatibility with SemVer 2.0.0
+and npm registry publication requirements.

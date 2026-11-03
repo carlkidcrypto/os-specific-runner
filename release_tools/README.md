@@ -13,7 +13,7 @@ The `release_tools/` directory provides release utilities for `os-specific-runne
 Atomically bumps version strings across package metadata, package locks, and Sphinx documentation.
 
 - **Aliases**: `release_tools/release.sh` is a symlink to `bump_version.sh`.
-- **Validation**: Supports Semantic Versioning (e.g. `2.5.0`, `2.5.0b0`) and Calendar Versioning.
+- **Validation**: Supports Semantic Versioning and SemVer-compliant Calendar Versioning (CalSemVer, e.g. `2026.11.3` for stable releases, `2026.11.3-0` for pre-releases without leading zeroes).
 - **Auto-detection**: Automatically extracts the current version from `package.json` if omitted.
 - **Safety checks**:
   - Ensures required target files contain the expected current version before making edits.
@@ -25,16 +25,16 @@ Atomically bumps version strings across package metadata, package locks, and Sph
 
 ```bash
 # Preview changes without modifying files
-./release_tools/bump_version.sh --dry-run 2.5.0
+./release_tools/bump_version.sh --dry-run 2026.11.3-0
 
 # Bump version and automatically verify tests, bundle build, and docs (-W)
-./release_tools/bump_version.sh --verify 2.5.0
+./release_tools/bump_version.sh --verify 2026.11.3-0
 
 # Bump version directly
-./release_tools/bump_version.sh 2.5.0
+./release_tools/bump_version.sh 2026.11.3-0
 
 # Specify old version explicitly (if needed)
-./release_tools/bump_version.sh 2.5.0 2.4.0
+./release_tools/bump_version.sh 2026.11.3-0 2.5.0
 ```
 
 ### Options
