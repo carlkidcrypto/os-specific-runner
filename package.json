@@ -1,6 +1,6 @@
 {
   "name": "os-specific-runner",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "GitHub Action that runs a different shell command per OS (Linux, macOS, Windows, AIX, FreeBSD, OpenBSD, SunOS) with configurable shells including bash, zsh, sh, pwsh, cmd, and python",
   "main": "index.js",
   "scripts": {
@@ -69,6 +69,7 @@
   "overrides": {
     "@istanbuljs/load-nyc-config": {
       "js-yaml": "^4.1.0"
-    }
+    },
+    "minimatch": "^11.0.4"
   }
 }

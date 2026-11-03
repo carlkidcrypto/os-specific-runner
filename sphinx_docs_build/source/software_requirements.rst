@@ -232,7 +232,7 @@ and ``lib.js`` using ``sphinx-js`` and ``jsdoc``.
 compiling Sphinx documentation with ``-W`` (treating all warnings as fatal errors).
 
 [DOCS-04] The documentation system shall maintain versioned documentation archives for each
-published release tag (e.g. ``docs/html_v2.4.0/``), served alongside latest development
+published release tag (e.g. ``docs/html_v2.5.0/``), served alongside latest development
 documentation via GitHub Pages.
 
 [DOCS-05] The documentation system shall maintain an automated version-selector landing page
