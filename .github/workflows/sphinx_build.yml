@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: 'Build versioned docs for specific tag (e.g. v2.5.0). If empty, builds latest docs for GitHub Pages.'
+        description: 'Build versioned docs for specific tag (e.g. v2026.11.3-0). If empty, builds latest docs for GitHub Pages.'
         required: false
         default: ''
 
