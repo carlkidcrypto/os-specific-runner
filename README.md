@@ -64,7 +64,7 @@ script file path (e.g. `fish {0}`).
 |----------------|----------|--------------------------------------------------|
 | `linuxShell`   | `bash`   | `bash`, `sh`, `python`, `python3`, or a custom `{0}` template |
 | `macosShell`   | `zsh`    | `zsh`, `bash`, `python`, `python3`, or a custom `{0}` template |
-| `windowsShell` | `pwsh`   | `pwsh`, `powershell`, `cmd`, `python`, `python3` |
+| `windowsShell` | `pwsh`   | `pwsh`, `powershell`, `cmd`, `python`, `python3`, or a custom `{0}` template |
 | `aixShell`     | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
 | `freebsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
 | `openbsdShell` | `sh`     | `sh`, `bash`, `python`, `python3`, or a custom `{0}` template |
