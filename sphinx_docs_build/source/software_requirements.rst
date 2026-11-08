@@ -265,9 +265,10 @@ Workflows (``gh-aw``), compiled with ``gh aw compile --actionlint``:
   are published.
 * **Coverage Autofix** (``coverage_autofix_every_3_days.md``): Runs scheduled test coverage audits
   every 3 days and opens draft pull requests proposing minimal test coverage fixes.
-* **Documentation Continuous Improvement** (``docs_continuous_improvement_every_3_days.md``): Runs
-  scheduled documentation reviews every 3 days and proposes focused improvements, operating with
-  explicit network firewall permissions (``network.allowed``).
+* **Documentation Continuous Improvement**
+  (``docs_continuous_improvement.md``): Runs scheduled documentation reviews
+  and proposes focused improvements, operating with explicit network firewall
+  permissions (``network.allowed``).
 
 [CICD-04] Documentation publication upon release shall be automated via Pull Request creation
 (``peter-evans/create-pull-request``) targeting the ``main`` branch with automated merge capability.
