@@ -44,14 +44,14 @@ jobs:
           python-version: "3.14"
 
       - name: Install yamllint
-        run: python -m pip install yamllint==1.38.0
+        run: python -m pip install --only-binary :all: yamllint==1.38.0
 
       - name: Install actionlint
         run: |
           set -e
           version=$(cat tools/actionlint-version.txt)
           archive="actionlint_${version#v}_linux_amd64.tar.gz"
-          curl -fsSL --retry 5 --retry-delay 2 --retry-all-errors "https://github.com/rhysd/actionlint/releases/download/${version}/${archive}" -o /tmp/actionlint.tar.gz
+          curl --proto =https -fsSL --retry 5 --retry-delay 2 --retry-all-errors "https://github.com/rhysd/actionlint/releases/download/${version}/${archive}" -o /tmp/actionlint.tar.gz
           mkdir -p /tmp/actionlint
           tar -xzf /tmp/actionlint.tar.gz -C /tmp/actionlint
           sudo install -m 0755 /tmp/actionlint/actionlint /usr/local/bin/actionlint
