@@ -42,7 +42,7 @@ Enable Dependabot to get notifications for updated actions by creating [.github/
 
 ### Command inputs (all optional)
 
-Each input accepts a shell command string. When omitted, a no-op `echo` is run so the step never fails silently.
+Each input accepts a shell command string. When omitted, a placeholder `echo` message is run for that platform, so the step still succeeds but does nothing useful.
 
 | Input     | Default shell | Default command                          |
 |-----------|---------------|------------------------------------------|
@@ -193,7 +193,7 @@ A snippet that covers every platform supported by `os.platform()`, useful when t
 
 ## Full Example
 
-A realistic workflow that installs Node.js, checks out code, and runs OS-specific build steps from a subdirectory:
+A realistic workflow that checks out code, installs Node.js, and runs OS-specific build steps from a subdirectory:
 
 ```yaml
 name: Build
