@@ -71,6 +71,7 @@ Generate and open a changelog update PR only when substantive changelog content 
 
 2. Generate candidate changelog content:
    - `git-chglog --config .chglog/config.yml -o CHANGELOG.tmp`
+   - Validate that `CHANGELOG.tmp` is non-empty and that the latest release section contains at least one commit entry (`- `) before proceeding. If the latest section is empty, stop with a clear error instead of opening an empty PR.
 
 3. Build commit intelligence context for summary quality:
    - Identify the current release tag from the triggering release. For `workflow_dispatch`, use the supplied `tag` input, or fallback to the latest tag or HEAD.
