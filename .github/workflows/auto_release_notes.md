@@ -80,7 +80,7 @@ When a new release is published, generate and update its release notes body on G
    - **Tests** — additions or updates to test suites (`tests/index.test.js`, integration tests).
    - **Packaging / Build** — dist bundle regeneration (`dist/index.js`), npm scripts, `package.json` / `package-lock.json` changes.
    - **CI / Workflows** — changes under `.github/workflows/` or build pipeline configuration.
-   - **Documentation** — changes to `README.md`, `HOWTOAI.rst`, `docs/`, or `CHANGELOG.md`.
+   - **Documentation** — changes to `README.rst`, `HOWTOAI.rst`, `docs/`, or `CHANGELOG.md`.
    - **Dependencies** — version bumps, lockfile updates, npm dependency changes.
    - **Chores / Misc** — refactoring, code style, tooling, or anything that does not fit above.
 
