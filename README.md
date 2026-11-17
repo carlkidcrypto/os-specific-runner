@@ -5,10 +5,17 @@ This version (2.2.0 and beyond) will attempt to stay up to date on the latest ve
 
 ## Status Badge(s)
 
-| [![unit_tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml) | [![integration_tests](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml) | [![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql) |
-| --------------- | --------------- | --------------- |
-| [![regenerate](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml) | [![codecov](https://codecov.io/gh/carlkidcrypto/os-specific-runner/graph/badge.svg)](https://codecov.io/gh/carlkidcrypto/os-specific-runner) | [![total download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/total.svg?style=flat-square&label=all%20downloads)](https://github.com/carlkidcrypto/os-specific-runner/releases) |
-| [![latest release download count](https://img.shields.io/github/downloads/carlkidcrypto/os-specific-runner/v2026.11.3-0/total.svg?style=flat-square)](https://github.com/carlkidcrypto/os-specific-runner/releases/tag/v2026.11.3-0) | | |
+[![Unit Tests](https://img.shields.io/github/actions/workflow/status/carlkidcrypto/os-specific-runner/unit_tests.yml?branch=main&style=flat-square&label=Unit%20Tests)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml)
+[![Integration Tests](https://img.shields.io/github/actions/workflow/status/carlkidcrypto/os-specific-runner/integration_tests.yml?branch=main&style=flat-square&label=Integration%20Tests)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml)
+[![Regenerate](https://img.shields.io/github/actions/workflow/status/carlkidcrypto/os-specific-runner/regenerate.yml?branch=main&style=flat-square&label=Regenerate)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml)
+
+[![Codecov](https://img.shields.io/codecov/c/github/carlkidcrypto/os-specific-runner?style=flat-square)](https://codecov.io/gh/carlkidcrypto/os-specific-runner)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=carlkidcrypto_os-specific-runner&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=carlkidcrypto_os-specific-runner)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=carlkidcrypto_os-specific-runner&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=carlkidcrypto_os-specific-runner)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=carlkidcrypto_os-specific-runner&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=carlkidcrypto_os-specific-runner)
+[![CodeQL](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql)
+
+[![License](https://img.shields.io/github/license/carlkidcrypto/os-specific-runner?style=flat-square)](LICENSE)
 
 ## AI Contributions
 
