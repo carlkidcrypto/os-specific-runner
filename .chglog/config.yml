@@ -39,13 +39,14 @@ options:
       Enhance: Enhancements
       Use: Code Refactoring
       Initial: Initial Setup
+      Release: Releases
       # Merge commits
       Merge: Merged Pull Requests
       # Fallback
       other: Other Changes
   header:
-    # Expanded pattern to better handle different prefixes and commit styles
-    pattern: "^\\s*(([\\w/-]+)(?:[:\\s/-].*)?)$"
+    # Expanded pattern to capture type:, type(scope):, type!:, type(scope)!:, Bump/Release, [tag], emoji, and unprefixed commits
+    pattern: "^\\s*((?:\\[[^\\]]+\\]\\s*)?([\\w]*)(?:\\([^)]*\\))?!?.*)$"
     pattern_maps:
       - Subject
       - Type

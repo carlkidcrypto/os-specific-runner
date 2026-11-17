@@ -1,0 +1,409 @@
+==================
+os-specific-runner
+==================
+
+All credit for the original work goes to `KnicKnic <https://github.com/KnicKnic>`_. This is a fork of https://github.com/KnicKnic/os-specific-run.
+This version (2.2.0 and beyond) will attempt to stay up to date on the latest version of npm and other dependencies.
+
+Status Badge(s)
+===============
+
+.. image:: https://img.shields.io/github/actions/workflow/status/carlkidcrypto/os-specific-runner/unit_tests.yml?branch=main&style=flat-square&label=Unit%20Tests
+   :target: https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/unit_tests.yml
+   :alt: Unit Tests
+
+.. image:: https://img.shields.io/github/actions/workflow/status/carlkidcrypto/os-specific-runner/integration_tests.yml?branch=main&style=flat-square&label=Integration%20Tests
+   :target: https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/integration_tests.yml
+   :alt: Integration Tests
+
+.. image:: https://img.shields.io/github/actions/workflow/status/carlkidcrypto/os-specific-runner/regenerate.yml?branch=main&style=flat-square&label=Regenerate
+   :target: https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/regenerate.yml
+   :alt: Regenerate
+
+.. image:: https://img.shields.io/codecov/c/github/carlkidcrypto/os-specific-runner?style=flat-square
+   :target: https://codecov.io/gh/carlkidcrypto/os-specific-runner
+   :alt: Codecov
+
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=carlkidcrypto_os-specific-runner&metric=alert_status
+   :target: https://sonarcloud.io/summary/new_code?id=carlkidcrypto_os-specific-runner
+   :alt: Quality Gate Status
+
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=carlkidcrypto_os-specific-runner&metric=security_rating
+   :target: https://sonarcloud.io/summary/new_code?id=carlkidcrypto_os-specific-runner
+   :alt: Security Rating
+
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=carlkidcrypto_os-specific-runner&metric=sqale_rating
+   :target: https://sonarcloud.io/summary/new_code?id=carlkidcrypto_os-specific-runner
+   :alt: Maintainability Rating
+
+.. image:: https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql/badge.svg
+   :target: https://github.com/carlkidcrypto/os-specific-runner/actions/workflows/github-code-scanning/codeql
+   :alt: CodeQL
+
+.. image:: https://img.shields.io/github/license/carlkidcrypto/os-specific-runner?style=flat-square
+   :target: LICENSE
+   :alt: License
+
+AI Contributions
+================
+
+See `HOWTOAI.rst <HOWTOAI.rst>`_ for a practical guide on using AI coding assistants to contribute to this project.
+
+How to Support This Project
+===========================
+
+.. image:: https://cdn.buymeacoffee.com/buttons/default-orange.png
+   :target: https://www.buymeacoffee.com/carlkidcrypto
+   :alt: Buy Me A Coffee
+   :height: 41px
+   :width: 174px
+
+About
+=====
+
+A GitHub Action that runs a different shell command depending on which OS the runner is using. The platform is detected via Node.js ```os.platform()`` <https://nodejs.org/api/os.html#osplatform>`_. Seven platforms are supported (``linux``, ``macos``, ``windows``, ``aix``, ``freebsd``, ``openbsd``, ``sunos``); on any other platform reported by Node.js the action fails with ``Unrecognized os <platform>``.
+
+.. code-block:: yaml
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux:   echo "Hi from Linux"
+        macos:   echo "Hi from macOS"
+        windows: echo "Hi from Windows"
+        aix:     echo "Hi from AIX"
+        freebsd: echo "Hi from FreeBSD"
+        openbsd: echo "Hi from OpenBSD"
+        sunos:   echo "Hi from SunOS"
+
+Keeping actions up-to-date
+==========================
+
+Enable Dependabot to get notifications for updated actions by creating `.github/dependabot.yml <https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuration-options-for-dependency-updates#about-the-dependabotyml-file>`_ in your repository with the `actions configuration <https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-actions-up-to-date-with-dependabot#enabling-dependabot-version-updates-for-actions>`_.
+
+Params
+======
+
+Command inputs (all optional)
+-----------------------------
+
+Each input accepts a shell command string. When omitted, a placeholder ``echo`` message is run for that platform, so the step still succeeds but does nothing useful.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Input
+     - Default shell
+     - Default command
+   * - ``linux``
+     - ``bash``
+     - ``echo "No command specified for linux"``
+   * - ``macos``
+     - ``zsh``
+     - ``echo "No command specified for macos"``
+   * - ``windows``
+     - ``pwsh``
+     - ``echo "No command specified for windows"``
+   * - ``aix``
+     - ``sh``
+     - ``echo "No command specified for aix"``
+   * - ``freebsd``
+     - ``sh``
+     - ``echo "No command specified for freebsd"``
+   * - ``openbsd``
+     - ``sh``
+     - ``echo "No command specified for openbsd"``
+   * - ``sunos``
+     - ``sh``
+     - ``echo "No command specified for sunos"``
+
+Shell override inputs (all optional)
+------------------------------------
+
+Override the shell used to execute a platform's command. Use one of the built-in shell names listed
+below, or supply any other shell command string containing a ``{0}`` placeholder for the temporary
+script file path (e.g. ``fish {0}``).
+
+.. list-table::
+   :header-rows: 1
+
+   * - Input
+     - Default
+     - Available choices
+   * - ``linuxShell``
+     - ``bash``
+     - ``bash``, ``sh``, ``python``, ``python3``, or a custom ``{0}`` template
+   * - ``macosShell``
+     - ``zsh``
+     - ``zsh``, ``bash``, ``python``, ``python3``, or a custom ``{0}`` template
+   * - ``windowsShell``
+     - ``pwsh``
+     - ``pwsh``, ``powershell``, ``cmd``, ``python``, ``python3``, or a custom ``{0}`` template
+   * - ``aixShell``
+     - ``sh``
+     - ``sh``, ``bash``, ``python``, ``python3``, or a custom ``{0}`` template
+   * - ``freebsdShell``
+     - ``sh``
+     - ``sh``, ``bash``, ``python``, ``python3``, or a custom ``{0}`` template
+   * - ``openbsdShell``
+     - ``sh``
+     - ``sh``, ``bash``, ``python``, ``python3``, or a custom ``{0}`` template
+   * - ``sunosShell``
+     - ``sh``
+     - ``sh``, ``bash``, ``python``, ``python3``, or a custom ``{0}`` template
+
+**Built-in shell templates** (expanded automatically when you use one of these names):
+
+.. list-table::
+   :header-rows: 1
+
+   * - Shell name
+     - Expanded template
+   * - ``bash``
+     - ``bash --noprofile --norc -eo pipefail {0}``
+   * - ``sh``
+     - ``sh -e {0}``
+   * - ``zsh``
+     - ``zsh -e {0}``
+   * - ``pwsh``
+     - ``pwsh -command "& '{0}'; if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }"``
+   * - ``powershell``
+     - ``powershell -command "& '{0}'; if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }"``
+   * - ``cmd``
+     - ``cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""``
+   * - ``python``
+     - ``python {0}``
+   * - ``python3``
+     - ``python3 {0}``
+
+Any other value is passed through as a raw shell command string.
+
+Other inputs
+------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Input
+     - Required
+     - Default
+     - Description
+   * - ``working_directory``
+     - No
+     - ``""``
+     - Subdirectory name, resolved relative to the OS temp directory (``os.tmpdir()``), where the generated temp script file is written. Does not change the working directory the command executes in — that remains the runner's default (e.g. ``$GITHUB_WORKSPACE``). Empty = a scratch temp dir.
+
+Practical Examples
+==================
+
+Basic cross-platform greeting
+-----------------------------
+
+The three standard GitHub-hosted runners (Linux, macOS, Windows):
+
+.. code-block:: yaml
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux:   echo "Hello from Linux"
+        macos:   echo "Hello from macOS"
+        windows: echo "Hello from Windows"
+
+Multi-line commands
+-------------------
+
+Use YAML's ``|`` block-scalar syntax to write multi-line scripts:
+
+.. code-block:: yaml
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux: |
+          echo "Setting up on Linux..."
+          sudo apt-get update -y
+          sudo apt-get install -y curl jq
+          echo "Done."
+        macos: |
+          echo "Setting up on macOS..."
+          brew update
+          brew install curl jq
+          echo "Done."
+        windows: |
+          Write-Host "Setting up on Windows..."
+          choco install curl jq -y
+          Write-Host "Done."
+
+Choosing a specific shell
+-------------------------
+
+Override the default shell per platform using the ``*Shell`` inputs:
+
+.. code-block:: yaml
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux:        echo "Running under sh on Linux"
+        linuxShell:   sh
+        macos:        echo "Running under bash on macOS"
+        macosShell:   bash
+        windows:      'echo Running under cmd on Windows'
+        windowsShell: cmd
+
+Running a Python script
+-----------------------
+
+Set any platform's shell to ``python3`` (Linux/macOS) or ``python`` (Windows) to execute the command string as Python code directly. The script is saved to a temporary ``.py`` file and passed to the interpreter:
+
+.. code-block:: yaml
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux:        "import platform; print('Linux, Python', platform.python_version())"
+        linuxShell:   python3
+        macos:        "import platform; print('macOS, Python', platform.python_version())"
+        macosShell:   python3
+        windows:      "import platform; print('Windows, Python', platform.python_version())"
+        windowsShell: python
+
+Using a working directory
+-------------------------
+
+The ``working_directory`` input controls where the action writes its generated
+temp script file (a subdirectory of the OS temp directory, not of your repository); it does not change the directory your command runs from
+(that stays the runner's default, e.g. ``$GITHUB_WORKSPACE``). To run a command
+from a specific path in your repository, ``cd`` into it yourself:
+
+.. code-block:: yaml
+
+    - uses: actions/checkout@v4
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux: cd ./scripts && bash build.sh
+        macos: cd ./scripts && bash build.sh
+        windows: Set-Location ./scripts; pwsh build.ps1
+
+All platforms
+-------------
+
+A snippet that covers every platform supported by ``os.platform()``, useful when targeting self-hosted exotic runners:
+
+.. code-block:: yaml
+
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+      with:
+        linux:   echo "Linux runner"
+        macos:   echo "macOS runner"
+        windows: echo "Windows runner"
+        aix:     echo "IBM AIX runner"
+        freebsd: echo "FreeBSD runner"
+        openbsd: echo "OpenBSD runner"
+        sunos:   echo "SunOS/Solaris runner"
+
+Full Example
+============
+
+A realistic workflow that checks out code, installs Node.js, and runs OS-specific build steps from a subdirectory:
+
+.. code-block:: yaml
+
+   name: Build
+
+   on:
+     push:
+       branches: [ main ]
+     pull_request:
+       branches: [ main ]
+
+   jobs:
+     build:
+       runs-on: ${{ matrix.os }}
+       strategy:
+         matrix:
+           os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+
+       steps:
+         - uses: actions/checkout@v4
+
+         - uses: actions/setup-node@v4
+           with:
+             node-version: '24'
+
+         - name: Install dependencies
+           uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+           with:
+             linux: |
+               cd ./app
+               npm ci
+               echo "Linux deps installed"
+             macos: |
+               cd ./app
+               npm ci
+               echo "macOS deps installed"
+             windows: |
+               Set-Location ./app
+               npm ci
+               Write-Host "Windows deps installed"
+
+         - name: Build
+           uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+           with:
+             linux:   cd ./app && npm run build
+             macos:   cd ./app && npm run build
+             windows: Set-Location ./app; npm run build
+
+Alternatives
+============
+
+You can do what this project accomplishes with simple ``if`` statements in GitHub Actions.
+
+The problem is you have to figure them out, and they end up creating multiple steps — one per OS — most of which are skipped at runtime. A single step (rather than multiple skipped steps) looks cleaner and makes it more obvious what failed. More details on ``if`` statements: https://github.community/t/what-is-the-correct-if-condition-syntax-for-checking-matrix-os-version/16221/4
+
+Developer instructions
+======================
+
+Setup Environment
+-----------------
+
+.. code-block:: pwsh
+
+   npm install -g npm@11.17.0
+   npm install -g @vercel/ncc@0.45.0
+   npm install
+
+Update lock file
+----------------
+
+.. code-block:: pwsh
+
+   npm update
+
+Update project
+--------------
+
+Rebuild the compiled ``dist/index.js`` bundle after changing ``index.js`` or ``lib.js``:
+
+.. code-block:: pwsh
+
+   npm run build
+
+Clean lock file and reinstall dependencies
+------------------------------------------
+
+.. code-block:: pwsh
+
+   rm -rf node_modules package-lock.json && npm install && npm test && npm run build
+
+Run tests
+---------
+
+Unit tests run locally with:
+
+.. code-block:: pwsh
+
+   npm test
+
+Integration tests and unit tests also run as workflows. See ``unit_tests.yml`` and ``integration_tests.yml`` for more information.
+
+----
+
+   This content was generated by AI and reviewed by humans. Mistakes may still occur. PRs for corrections are welcome.

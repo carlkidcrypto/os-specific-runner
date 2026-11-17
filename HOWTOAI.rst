@@ -86,7 +86,7 @@ Before submitting AI-assisted code, confirm that:
 * Any new helper exported from ``lib.js`` has corresponding Jest tests in
   ``tests/index.test.js``
 * The ``action.yml`` and the JavaScript code agree on input names, defaults, and types
-* Documentation in ``README.md`` reflects any new inputs or behavioural changes
+* Documentation in ``README.rst`` reflects any new inputs or behavioural changes
 
 **Always get human review for:**
 
@@ -316,7 +316,7 @@ Verify the template contains ``{0}`` and matches the pattern of ``sh: 'sh -e {0}
    });
 
 **Step 4 — Update ``action.yml`` documentation comments** (if you are documenting
-supported shells in a comment block) and update ``README.md`` to list ``fish`` under
+supported shells in a comment block) and update ``README.rst`` to list ``fish`` under
 the supported shells table.
 
 **Step 5 — Validate**
@@ -358,7 +358,7 @@ implementation? Show me the minimal fix."*
 **Step 3 — Understand before applying**
 
 Read the AI's explanation. Decide whether the test expectation or the implementation
-is wrong by checking related tests and the ``README.md`` description of
+is wrong by checking related tests and the ``README.rst`` description of
 ``working_directory``. Do not blindly apply the fix.
 
 **Step 4 — Apply the fix to the right file**
@@ -434,7 +434,7 @@ If you extract a pure helper function (e.g., ``parseTimeout(raw)``), add it to
 
 **Step 4 — Update documentation**
 
-Add the new input to the inputs table in ``README.md`` and rebuild:
+Add the new input to the inputs table in ``README.rst`` and rebuild:
 
 .. code-block:: bash
 

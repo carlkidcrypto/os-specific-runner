@@ -239,7 +239,7 @@ documentation via GitHub Pages.
 (``sphinx_docs_build/landing/source/index.rst``) linking to all archived release versions and the
 latest development documentation.
 
-[DOCS-06] User and developer guides shall be maintained in ``README.md`` and ``HOWTOAI.rst``, and
+[DOCS-06] User and developer guides shall be maintained in ``README.rst`` and ``HOWTOAI.rst``, and
 traceable software requirements shall be maintained in
 ``sphinx_docs_build/source/software_requirements.rst``.
 

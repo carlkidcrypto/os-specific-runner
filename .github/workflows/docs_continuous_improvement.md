@@ -35,7 +35,7 @@ Review and improve repository documentation gradually over time.
 
 Audit and improve:
 
-- `README.md`
+- `README.rst`
 - `HOWTOAI.rst`
 - `docs/**`
 - JSDoc comments and inline documentation in `index.js` and `lib.js`
