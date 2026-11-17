@@ -54,7 +54,7 @@ When running `bump_version.sh` in `os-specific-runner`, the following files are 
 1. `package.json` &mdash; Node.js package version (`"version": "<VER>"`)
 2. `package-lock.json` &mdash; npm lockfile dependency & package root version
 3. `sphinx_docs_build/source/conf.py` &mdash; Sphinx documentation release variable (`release = "v<VER>"`)
-4. `README.md` &mdash; Badges and action usage examples
+4. `README.rst` &mdash; Badges and action usage examples
 
 ### Excluded Files
 
