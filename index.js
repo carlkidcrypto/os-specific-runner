@@ -3,7 +3,7 @@ import { exec as _exec } from '@actions/exec';
 
 import { join } from 'path';
 
-// 'aix', 'darwin', 'freebsd', 'linux', 'openbsd', 'sunos', and 'win32'.
+// os.platform() values handled below: 'aix', 'darwin', 'freebsd', 'linux', 'openbsd', 'sunos', and 'win32'.
 import { platform as _platform } from 'os';
 import { promises, writeFileSync } from 'fs';
 import { randomUUID } from 'crypto';

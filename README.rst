@@ -61,7 +61,7 @@ How to Support This Project
 About
 =====
 
-A GitHub Action that runs a different shell command depending on which OS the runner is using. The platform is detected via Node.js ```os.platform()`` <https://nodejs.org/api/os.html#osplatform>`_. All 7 platforms supported by that API are covered.
+A GitHub Action that runs a different shell command depending on which OS the runner is using. The platform is detected via Node.js ```os.platform()`` <https://nodejs.org/api/os.html#osplatform>`_. Seven platforms are supported (``linux``, ``macos``, ``windows``, ``aix``, ``freebsd``, ``openbsd``, ``sunos``); on any other platform reported by Node.js the action fails with ``Unrecognized os <platform>``.
 
 .. code-block:: yaml
 
