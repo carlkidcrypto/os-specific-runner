@@ -17,82 +17,16 @@ jobs:
   # ── Build latest docs on push to main ─────────────────────────────────────
   sphinx_docs_build:
     if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.release_tag == '')
-    runs-on: ubuntu-latest
     permissions:
-      contents: write
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-
-      - name: Set up Python 3.12 env for sphinx...
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "24"
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v6
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-sphinx-${{ hashFiles('sphinx_docs_build/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-sphinx-
-            ${{ runner.os }}-pip-
-
-      - name: Install jsdoc
-        run: npm install -g jsdoc
-
-      - name: Install Pip Requirements
-        run: |
-          cd ${{ github.workspace }}/sphinx_docs_build
-          # Try to install requirements, if it fails then purge cache and retry
-          if ! pip install -r requirements.txt; then
-            echo "Installation failed, purging pip cache and retrying..."
-            pip install --upgrade pip || true
-            pip cache purge || true
-            pip install -r requirements.txt
-          fi
-          pip install -r ${{ github.workspace }}/sphinx_docs_build/landing/requirements.txt
-
-      - name: Run sphinx (latest)
-        run: |
-          cd ${{ github.workspace }}/sphinx_docs_build
-          mkdir -p source/_static
-          mkdir -p source/_templates
-          make clean && make html SPHINXOPTS="-W"
-
-      - name: Build landing page
-        run: |
-          cd ${{ github.workspace }}/sphinx_docs_build/landing
-          mkdir -p source/_static
-          mkdir -p source/_templates
-          make html SPHINXOPTS="-W"
-
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: docs/
-
-  deploy_pages:
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.release_tag == '')
-    needs: sphinx_docs_build
-    runs-on: ubuntu-latest
-    permissions:
+      contents: read
       pages: write
       id-token: write
-    environment:
-      name: github-pages
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+    uses: carlkidcrypto/shared-workflows/.github/workflows/reusable_sphinx_build.yml@14e025f6c182b7b20718538f533ca467a9ff9c6c
+    with:
+      landing-dir: 'sphinx_docs_build/landing'
+      extra-requirements-file: 'sphinx_docs_build/landing/requirements.txt'
+      pre-build-cmd: 'npm install -g jsdoc'
+      deploy-pages: true
 
   # ── Build versioned docs on release and commit back to main ───────────────
   sphinx_docs_build_release:
