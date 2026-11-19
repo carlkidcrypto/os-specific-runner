@@ -50,9 +50,8 @@ jobs:
         run: npm test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v7
+        uses: carlkidcrypto/shared-workflows/actions/upload-codecov@873e1fea29bbd9dc73651d85a28920cb0797cb85
         with:
-          fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           flags: ${{ matrix.os }}
+          fail-ci-if-error: 'true'
