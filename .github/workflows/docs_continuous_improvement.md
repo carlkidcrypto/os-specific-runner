@@ -10,23 +10,13 @@ permissions:
   actions: read
   contents: read
   copilot-requests: write
-safe-outputs:
-  noop:
-    report-as-issue: true
-  create-pull-request:
-    title-prefix: "[docs-improvement] "
-    labels: [documentation, automated-pr]
-    draft: true
-    preserve-branch-name: true
-    if-no-changes: "ignore"
 timeout-minutes: 45
 model: sonnet
-engine:
-  id: copilot
 network:
   allowed: [defaults, github, node, "github.community"]
 imports:
-  - carlkidcrypto/shared-workflows/shared/pr-preflight-checklist.md@873e1fea29bbd9dc73651d85a28920cb0797cb85
+  - carlkidcrypto/shared-workflows/shared/docs-continuous-improvement-core.md@3538efdfabdbcf0ae956cfc5685fd4c21a59696b
+  - carlkidcrypto/shared-workflows/shared/pr-preflight-checklist.md@3538efdfabdbcf0ae956cfc5685fd4c21a59696b
 ---
 
 # Documentation Continuous Improvement
