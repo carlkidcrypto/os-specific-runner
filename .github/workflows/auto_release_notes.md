@@ -17,18 +17,14 @@ permissions:
   actions: read
   contents: read
   copilot-requests: write
-safe-outputs:
-  noop:
-    report-as-issue: true
-  update-release:
 timeout-minutes: 60
 model: sonnet
-engine:
-  id: copilot
 network:
   allowed: [defaults, github]
 tools:
   bash: true
+imports:
+  - carlkidcrypto/shared-workflows/shared/auto-release-notes-core.md@3538efdfabdbcf0ae956cfc5685fd4c21a59696b
 ---
 
 # Auto Update Release Notes
