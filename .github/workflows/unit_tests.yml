@@ -54,4 +54,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: ${{ matrix.os }}
-          fail-ci-if-error: 'true'
+          fail-ci-if-error: 'false'
