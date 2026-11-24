@@ -50,7 +50,7 @@ jobs:
         run: npm test
 
       - name: Upload coverage to Codecov
-        uses: carlkidcrypto/shared-workflows/actions/upload-codecov@22f04e222fa07048891327e4d34bb174d36e7bfa
+        uses: carlkidcrypto/shared-workflows/actions/upload-codecov@eeefdd5c0a594d59ae86a09437b2de9bb57618a3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: ${{ matrix.os }}
