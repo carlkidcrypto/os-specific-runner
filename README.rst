@@ -65,7 +65,7 @@ A GitHub Action that runs a different shell command depending on which OS the ru
 
 .. code-block:: yaml
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux:   echo "Hi from Linux"
         macos:   echo "Hi from macOS"
@@ -202,7 +202,7 @@ The three standard GitHub-hosted runners (Linux, macOS, Windows):
 
 .. code-block:: yaml
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux:   echo "Hello from Linux"
         macos:   echo "Hello from macOS"
@@ -215,7 +215,7 @@ Use YAML's ``|`` block-scalar syntax to write multi-line scripts:
 
 .. code-block:: yaml
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux: |
           echo "Setting up on Linux..."
@@ -239,7 +239,7 @@ Override the default shell per platform using the ``*Shell`` inputs:
 
 .. code-block:: yaml
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux:        echo "Running under sh on Linux"
         linuxShell:   sh
@@ -255,7 +255,7 @@ Set any platform's shell to ``python3`` (Linux/macOS) or ``python`` (Windows) to
 
 .. code-block:: yaml
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux:        "import platform; print('Linux, Python', platform.python_version())"
         linuxShell:   python3
@@ -276,7 +276,7 @@ from a specific path in your repository, ``cd`` into it yourself:
 
     - uses: actions/checkout@v4
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux: cd ./scripts && bash build.sh
         macos: cd ./scripts && bash build.sh
@@ -289,7 +289,7 @@ A snippet that covers every platform supported by ``os.platform()``, useful when
 
 .. code-block:: yaml
 
-    - uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+    - uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
       with:
         linux:   echo "Linux runner"
         macos:   echo "macOS runner"
@@ -329,7 +329,7 @@ A realistic workflow that checks out code, installs Node.js, and runs OS-specifi
              node-version: '24'
 
          - name: Install dependencies
-           uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+           uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
            with:
              linux: |
                cd ./app
@@ -345,7 +345,7 @@ A realistic workflow that checks out code, installs Node.js, and runs OS-specifi
                Write-Host "Windows deps installed"
 
          - name: Build
-           uses: carlkidcrypto/os-specific-runner@v2026.11.3-0
+           uses: carlkidcrypto/os-specific-runner@v2026.11.24-beta.0
            with:
              linux:   cd ./app && npm run build
              macos:   cd ./app && npm run build
